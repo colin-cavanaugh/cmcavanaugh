@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES5", // Ensures compatibility with older environments
+    "module": "ESNext", // Use ES Modules for modern bundlers
+    "declaration": true, // Generate `.d.ts` files for type definitions
+    "declarationMap": true, // Map `.d.ts` files to source files for debugging
+    "sourceMap": true, // Generate `.map` files for debugging
+    "outDir": "./dist", // Output directory for compiled files
+    "strict": true, // Enable all strict type-checking options
+    "jsx": "react-jsx", // Use JSX for React
+    "moduleResolution": "Node", // Resolve modules like Node.js
+    "esModuleInterop": true, // Better interoperability with CommonJS
+    "skipLibCheck": true, // Skip type checks for dependencies
+    "forceConsistentCasingInFileNames": true // Ensure consistent file name casing
+  },
+  "include": ["src/**/*"], // Include all TypeScript files in the `src` directory
+  "exclude": ["node_modules", "dist", "test"], // Exclude `node_modules` and build/test directories
+  "ts-node": {
+    "transpileOnly": true // For faster testing with ts-node
+  }
+}
