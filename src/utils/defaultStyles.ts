@@ -23,11 +23,9 @@ export const defaultStyles = {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '100vh', // Full height
-    width: '100vw', // Full width
+    maxHeight: '100vh', // Full height
+    maxWidth: '100vw', // Full width
     padding: '20px',
-    // backgroundColor: 'lightgray',
-    // border: '1px solid #ccc',
     boxSizing: 'border-box', // Ensures proper padding
   }),
   GridContainer: css({
@@ -66,6 +64,14 @@ export const defaultStyles = {
       boxSizing: 'border-box', // Ensure padding is included in width calculations
       borderRadius: '8px',
     }),
+  Profile: css({
+    display: 'inline-block',
+    height: 100,
+    width: 100,
+    borderRadius: 50,
+    objectFit: 'cover',
+    // overflow: 'hidden',
+  }),
 }
 // Modal
 // The Modal component is used to display overlay content.

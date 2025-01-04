@@ -3,8 +3,16 @@ import React, { CSSProperties } from 'react'
 export interface Look extends CSSProperties {
   m?: number | string // Margin shorthand
   p?: number | string // Padding shorthand
-  flex?: string // Flex display
-  flexDirection?: 'row' | 'column' // Flex direction
+  flex?: string | number // Flex value (e.g., flex: 1 or flex: '1 1 auto')
+  flexDirection?: 'row' | 'column' | 'row-reverse' | 'column-reverse' // Flex direction
+  justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' // Alignment along the main axis
+  alignItems?: 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline' // Alignment along the cross axis
+  alignSelf?: 'auto' | 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline' // Overrides alignItems for a specific item
+  flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse' // Flex wrapping
+  flexGrow?: number // Specifies how much a flex item grows
+  flexShrink?: number // Specifies how much a flex item shrinks
+  flexBasis?: string | number // Basis size of a flex item
+  order?: number // Specifies the order of the flex item
   border?: string
   bgColor?: string // Background color
   borderColor?: string // Border color
@@ -30,4 +38,14 @@ export interface BreakpointMarkerProps {
   breakpoint: 'xs' | 'sm' | 'md' | 'lg' | 'xl' // Responsive breakpoints
   label: string // The label to display for the marker
   color: string // The color of the marker
+}
+export interface ProfileProps extends BaseProps<HTMLImageElement> {
+  src: string // Image source URL (required)
+  placeholder?: string // Fallback image URL if `src` fails to load
+  width?: number | string // Width of the image
+  height?: number | string // Height of the image
+  borderRadius?: number | string // Border radius (e.g., circle, rounded corners)
+  border?: string // Optional border styling
+  boxShadow?: string // Optional box-shadow styling
+  alt?: string // Alt text for accessibility (optional, default: "Profile image")
 }
