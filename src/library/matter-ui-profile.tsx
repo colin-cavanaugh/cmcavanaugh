@@ -1,11 +1,18 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react' // Import `css` from Emotion
+import { css } from '@emotion/react'
 import { BaseProps, ProfileProps } from '../utils/types'
-import { defaultStyles } from '../utils/defaultStyles'
+import { defaultPlaceholder, defaultStyles } from '../utils/defaultStyles'
 import { processLook } from '../utils/processLook'
+import DefaultPersonIcon from '../img/matterPersonIcon.png'
 
-export const Profile: React.FC<ProfileProps> = ({ look = {}, style, src, alt, placeholder, ...props }) => {
-  // Convert styles to Emotion-compatible styles
+export const Profile: React.FC<ProfileProps> = ({
+  look = {},
+  style,
+  src,
+  alt,
+  placeholder = DefaultPersonIcon,
+  ...props
+}) => {
   const lookStyles = css(processLook(look))
   const inlineStyles = style ? css(style as Record<string, any>) : undefined
 
@@ -15,5 +22,7 @@ export const Profile: React.FC<ProfileProps> = ({ look = {}, style, src, alt, pl
     }
   }
 
-  return <img src={src} alt={alt} onError={handleError} css={[defaultStyles.Profile, lookStyles, inlineStyles]} />
+  return (
+    <img src={src} alt={alt} onError={handleError} css={[defaultStyles.Profile, lookStyles, inlineStyles]} {...props} />
+  )
 }

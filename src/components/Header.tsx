@@ -1,10 +1,7 @@
-import React from 'react'
 import { GridItem } from '../library/matter-ui-griditem'
-import { Section } from '../library/matter-ui-section'
 import { Letter } from '../library/matter-ui-letter'
 import { Profile } from '../library/matter-ui-profile'
-import { GridContainer } from '../library/matter-ui-gridcontainer'
-import ProfileSnackbar from './ProfileSnackbar'
+
 const Header = () => {
   return (
     <GridItem
@@ -15,12 +12,8 @@ const Header = () => {
         alignItems: 'center',
       }}
     >
-      <Section look={{ display: 'flex' }}>
-        <Letter look={{ fontSize: 28, textAlign: 'center' }}>Colin Cavanaugh</Letter>
-      </Section>
-      <Section look={{ display: 'flex' }}>
-        <ProfileSnackbar />
-      </Section>
+      <Letter look={{ fontSize: 28, textAlign: 'center' }}>Colin Cavanaugh</Letter>
+      <Profile look={{ borderRadius: 75 }} src={'src/img/groheadshot.jpg'} />
     </GridItem>
   )
 }

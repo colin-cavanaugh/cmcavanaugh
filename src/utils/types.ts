@@ -42,6 +42,7 @@ export interface BreakpointMarkerProps {
 export interface ProfileProps extends BaseProps<HTMLImageElement> {
   src: string // Image source URL (required)
   placeholder?: string // Fallback image URL if `src` fails to load
+  color?: string
   width?: number | string // Width of the image
   height?: number | string // Height of the image
   borderRadius?: number | string // Border radius (e.g., circle, rounded corners)

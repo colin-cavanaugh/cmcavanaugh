@@ -2,7 +2,7 @@
 import { Look } from './types'
 
 export const processLook = (look: Look): Record<string, any> => {
-  const { m, p, flex, flexDirection, border, borderColor, bgColor, radius, ...rest } = look
+  const { m, p, flex, flexDirection, border, borderColor, bgColor, radius, color, ...rest } = look
 
   return {
     flex: flex,
@@ -13,6 +13,7 @@ export const processLook = (look: Look): Record<string, any> => {
     border: borderColor && border ? `${border.split(' ')[0]} ${border.split(' ')[1]} ${borderColor}` : border, // Ensure borderColor is included
     borderColor: borderColor && !border ? borderColor : undefined, // Only set borderColor if border is not already set
     borderRadius: radius,
+    color: color || 'inherit',
     ...rest, // Include any additional custom styles
   }
 }
