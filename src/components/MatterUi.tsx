@@ -36,7 +36,7 @@ const MatterUi = () => {
     }),
   }))
   return (
-    <>
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: 'calc(100vh - 225px)' }}>
       <GridContainer look={{ border: '3px solid', borderColor: theme.palette.text.primary, radius: 10, gap: 6 }}>
         <GridItem xs={12} sm={12} md={12} lg={12} xl={12}>
           <Letter look={{ fontSize: 22, fontWeight: 'bold', textAlign: 'center' }}>{'Matter UI Grid Container'}</Letter>
@@ -103,7 +103,7 @@ const MatterUi = () => {
           <Item sx={{ border: '2px solid', borderColor: 'rgb(240, 128, 128)', padding: '10px', borderRadius: '8px' }} />
         </Grid>
       </Grid>
-    </>
+    </Box>
   )
 }
 
