@@ -32,7 +32,7 @@ export const defaultStyles = {
     justifyContent: 'center',
     maxHeight: '100vh', // Full height
     maxWidth: '100vw', // Full width
-    padding: '20px',
+    padding: '12px',
     boxSizing: 'border-box', // Ensures proper padding
   }),
   GridContainer: css({

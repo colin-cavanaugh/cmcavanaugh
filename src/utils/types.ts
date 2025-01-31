@@ -3,6 +3,7 @@ import React, { CSSProperties } from 'react'
 export interface Look extends CSSProperties {
   m?: number | string // Margin shorthand
   p?: number | string // Padding shorthand
+  gap?: number | string
   flex?: string | number // Flex value (e.g., flex: 1 or flex: '1 1 auto')
   flexDirection?: 'row' | 'column' | 'row-reverse' | 'column-reverse' // Flex direction
   justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' // Alignment along the main axis
@@ -49,4 +50,10 @@ export interface ProfileProps extends BaseProps<HTMLImageElement> {
   border?: string // Optional border styling
   boxShadow?: string // Optional box-shadow styling
   alt?: string // Alt text for accessibility (optional, default: "Profile image")
+}
+export interface Action {
+  icon: JSX.Element
+  name: string
+  action: 'link' | 'download' | 'toggle'
+  link?: string
 }
