@@ -7,7 +7,7 @@ const AboutMe = () => {
   const theme = useTheme()
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: 'calc(100vh - 350px)' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: 'calc(100vh - 275px)' }}>
       <Section look={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '75%' }}>
         <Letter look={{ fontSize: 18 }}>
           I’m a dedicated and versatile software engineer with over two years of full-stack development experience,

@@ -9,7 +9,7 @@ const rootRoute = createRootRoute({
     return (
       <>
         <App />
-        <TanStackRouterDevtools />
+        {/* <TanStackRouterDevtools /> */}
       </>
     )
   },

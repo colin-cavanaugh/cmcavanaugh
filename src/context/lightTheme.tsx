@@ -5,8 +5,14 @@ export const lightTheme = createTheme({
     mode: 'light',
     primary: { main: '#1976d2', contrastText: '#ffffff' }, // Strong blue with white contrast
     secondary: { main: '#dc004e', contrastText: '#ffffff' }, // Bright red
-    background: { default: 'rgba(255,255,255,1)', paper: '#ffffff', custom: 'rgba(0, 0, 0, 1)' }, // Softer whites for modern UI
-    text: { primary: '#212121', secondary: '#616161' },
+    background: {
+      default: 'rgba(255,255,255,1)',
+      paper: '#ffffff',
+      custom: 'rgba(0, 0, 0, 1)',
+      blur: 'rgba(255,255,255,0.7)',
+      icon: 'rgb(25, 118, 210)',
+    }, // Softer whites for modern UI
+    text: { primary: 'rgba(0, 0, 0, 1)', secondary: '#616161' },
   },
   components: {
     MuiPaper: {

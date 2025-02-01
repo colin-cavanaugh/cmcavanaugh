@@ -40,8 +40,8 @@ const Header = () => {
       >
         <Profile
           look={{
-            width: isSmallScreen ? 40 : 75,
-            height: isSmallScreen ? 40 : 75,
+            width: isSmallScreen ? 55 : 150,
+            height: isSmallScreen ? 55 : 150,
             borderRadius: '50%',
             cursor: 'pointer',
           }}

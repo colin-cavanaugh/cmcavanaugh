@@ -1,4 +1,4 @@
-import { IconButton, SpeedDial, SpeedDialAction, SpeedDialIcon, useTheme } from '@mui/material'
+import { Box, IconButton, SpeedDial, SpeedDialAction, SpeedDialIcon, Tooltip, useTheme } from '@mui/material'
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary'
 import AssignmentIcon from '@mui/icons-material/Assignment'
 import { Section } from '../library/matter-ui-section'
@@ -32,18 +32,22 @@ const getActions = (theme: Theme, currentThemeMode: ThemeMode) => {
 
   return [
     {
-      icon: <HomeIcon style={{ height: 35, width: 35 }} />,
+      icon: <HomeIcon style={{ height: 35, width: 35, color: theme.palette.background.icon }} />,
       name: 'Home',
       action: 'link',
       link: '/',
     },
     {
-      icon: <LocalLibraryIcon style={{ height: 35, width: 35 }} />,
+      icon: <LocalLibraryIcon style={{ height: 35, width: 35, color: theme.palette.background.icon }} />,
       name: 'Matter UI',
       action: 'link',
       link: '/matterui',
     },
-    { icon: <AssignmentIcon style={{ height: 35, width: 35 }} />, name: 'View Resume', action: 'download' },
+    {
+      icon: <AssignmentIcon style={{ height: 35, width: 35, color: theme.palette.background.icon }} />,
+      name: 'Résumé',
+      action: 'download',
+    },
     {
       icon: themeMap[currentThemeMode].icon,
       name: themeMap[currentThemeMode].name,
@@ -65,7 +69,19 @@ const MenuSpeedDial = () => {
     <Section>
       <SpeedDial
         ariaLabel='Navigation'
-        sx={{ position: 'absolute', bottom: 16, right: 16 }}
+        sx={{
+          position: 'absolute',
+          bottom: 16,
+          right: 16,
+          '.MuiSpeedDialAction-staticTooltipLabel': {
+            bgcolor: 'transparent',
+            boxShadow: 'none',
+            width: '100%',
+            textAlign: 'left',
+            minWidth: 100,
+            fontWeight: 'bold',
+          },
+        }}
         FabProps={{ style: { height: 65, width: 65 } }}
         icon={
           <SpeedDialIcon
@@ -80,7 +96,34 @@ const MenuSpeedDial = () => {
           <SpeedDialAction
             key={action.name}
             icon={action.icon}
-            tooltipTitle={<Letter>{action.name}</Letter>}
+            tooltipPlacement='left'
+            tooltipOpen={true}
+            tooltipTitle={
+              <Box
+                sx={{
+                  minWidth: 150,
+                  backgroundColor: theme.palette.background.blur,
+                }}
+              >
+                <Letter
+                  look={{
+                    bgColor: theme.palette.background.blur,
+                    color: theme.palette.text.primary,
+                    boxShadow: 'none',
+                    width: '100%',
+                    height: '100%',
+                    textAlign: 'left',
+                    minWidth: 150,
+                    fontWeight: 'bolder',
+                    fontSize: 18,
+                    p: 22,
+                    paddingLeft: 8,
+                  }}
+                >
+                  {action?.name}
+                </Letter>
+              </Box>
+            }
             sx={{ fontSize: 34 }}
             FabProps={{ style: { height: 55, width: 55 }, size: 'large' }}
             onClick={() => {

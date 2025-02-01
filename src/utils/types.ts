@@ -3,6 +3,7 @@ import React, { CSSProperties } from 'react'
 export interface Look extends CSSProperties {
   m?: number | string // Margin shorthand
   p?: number | string // Padding shorthand
+  py?: number | string
   gap?: number | string
   flex?: string | number // Flex value (e.g., flex: 1 or flex: '1 1 auto')
   height?: number | string

@@ -5,7 +5,12 @@ export const darkTheme = createTheme({
     mode: 'dark',
     primary: { main: 'rgba(255,255,255,1)', contrastText: 'rgba(0,0,0,1)' },
     secondary: { main: 'rgba(255,255,255,1)', contrastText: 'rgba(0,0,0,1)' },
-    background: { default: 'rgba(0,0,0,1)', paper: 'rgba(0,0,0,1)', custom: 'rgb(113, 120, 184)' },
+    background: {
+      default: 'rgba(0,0,0,1)',
+      paper: 'rgba(0,0,0,1)',
+      custom: 'rgb(113, 120, 184)',
+      blur: 'rgba(0, 0, 0, 0.7)',
+    },
     text: { primary: 'rgba(255,255,255,1)', secondary: 'rgba(255,255,255,0.8)' },
   },
   components: {

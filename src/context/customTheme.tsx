@@ -5,7 +5,13 @@ export const customTheme = createTheme({
     mode: 'light',
     primary: { main: 'rgb(132, 140, 207)', contrastText: '#4e342e' },
     secondary: { main: 'rgb(170, 178, 240)', contrastText: '#4e342e' },
-    background: { default: 'rgb(170, 178, 240)', paper: 'rgba(255,255,255,1)', custom: 'rgb(25, 118, 210)' },
+    background: {
+      default: 'rgb(170, 178, 240)',
+      paper: 'rgba(255,255,255,1)',
+      custom: 'rgb(25, 118, 210)',
+      blur: 'rgba(170, 178, 240, 0.8)',
+      icon: 'rgba(113, 120, 184, 1)',
+    },
     text: { primary: 'rgba(0,0,0,1)', secondary: 'rgba(255,255,255,1)' },
   },
   components: {
