@@ -8,7 +8,7 @@ export const darkTheme = createTheme({
     background: {
       default: 'rgba(0,0,0,1)',
       paper: 'rgba(0,0,0,1)',
-      custom: 'rgb(113, 120, 184)',
+      custom: 'rgb(234, 112, 71)',
       blur: 'rgba(0, 0, 0, 0.7)',
     },
     text: { primary: 'rgba(255,255,255,1)', secondary: 'rgba(255,255,255,0.8)' },
