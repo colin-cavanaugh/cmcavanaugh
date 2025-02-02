@@ -1,11 +1,5 @@
 import { createContext, useContext, useMemo, useState, ReactNode } from 'react'
-import {
-  ThemeProvider as MuiThemeProvider,
-  createTheme,
-  CssBaseline,
-  Theme,
-  PaletteMode,
-} from '@mui/material'
+import { ThemeProvider as MuiThemeProvider, createTheme, CssBaseline, Theme, PaletteMode } from '@mui/material'
 import { darkTheme } from './darkTheme'
 import { lightTheme } from './lightTheme'
 import { customTheme } from './customTheme'
@@ -25,9 +19,7 @@ const themes: Record<ThemeMode, Theme> = {
   custom: customTheme,
 }
 
-export const ThemeContext = createContext<ThemeContextProps | undefined>(
-  undefined
-)
+export const ThemeContext = createContext<ThemeContextProps | undefined>(undefined)
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [mode, setMode] = useState<ThemeMode>('custom')
@@ -39,9 +31,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   // ✅ Keep the cycling toggle for convenience
   const toggleTheme = () => {
-    setMode((prevMode) =>
-      prevMode === 'light' ? 'dark' : prevMode === 'dark' ? 'custom' : 'light'
-    )
+    setMode(prevMode => (prevMode === 'light' ? 'dark' : prevMode === 'dark' ? 'custom' : 'light'))
   }
 
   const muiMode: PaletteMode = mode === 'custom' ? 'light' : mode
@@ -49,9 +39,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <ThemeContext.Provider value={{ mode, setTheme, toggleTheme }}>
-      <MuiThemeProvider
-        theme={{ ...theme, palette: { ...theme.palette, mode: muiMode } }}
-      >
+      <MuiThemeProvider theme={{ ...theme, palette: { ...theme.palette, mode: muiMode } }}>
         <CssBaseline />
         {children}
       </MuiThemeProvider>
@@ -61,7 +49,6 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
 export const useThemeContext = () => {
   const context = useContext(ThemeContext)
-  if (!context)
-    throw new Error('useThemeContext must be used within a ThemeProvider')
+  if (!context) throw new Error('useThemeContext must be used within a ThemeProvider')
   return context
 }

@@ -36,7 +36,7 @@ const AboutMe = () => {
             borderRadius: '50%',
             cursor: 'pointer',
           }}
-          src={'/coloradoPicCropped.png'}
+          src={'./src/img/coloradoPicCropped.jpg'}
           onClick={() => router.navigate({ to: '/' })}
         />
       </Box>
@@ -79,14 +79,11 @@ const AboutMe = () => {
             marginTop: 2,
           }}
         >
-          I’m a dedicated and versatile software engineer with over two years of
-          full-stack development experience, specializing in building scalable,
-          user-centric applications. My journey began with developing a robust
-          internal CRM and workflow management system, where I honed my skills
-          in React, Node.js, DynamoDB, and AWS services. This project not only
-          solidified my technical expertise but also ignited my passion for
-          crafting solutions that make a meaningful impact on both users and
-          teams.
+          I’m a dedicated and versatile software engineer with over two years of full-stack development experience,
+          specializing in building scalable, user-centric applications. My journey began with developing a robust
+          internal CRM and workflow management system, where I honed my skills in React, Node.js, DynamoDB, and AWS
+          services. This project not only solidified my technical expertise but also ignited my passion for crafting
+          solutions that make a meaningful impact on both users and teams.
         </Typography>
 
         <Typography
@@ -96,13 +93,11 @@ const AboutMe = () => {
             marginTop: 2,
           }}
         >
-          Over the past year, I’ve focused on optimizing real-time features like
-          WebSocket integration, notification systems, and dynamic data updates
-          while ensuring seamless user experiences across platforms. I’m deeply
-          curious and love to learn, whether it’s exploring AI for development
-          optimization or mastering new technologies. My approach is grounded in
-          thoughtful planning, iterative improvement, and a strong commitment to
-          delivering quality results.
+          Over the past year, I’ve focused on optimizing real-time features like WebSocket integration, notification
+          systems, and dynamic data updates while ensuring seamless user experiences across platforms. I’m deeply
+          curious and love to learn, whether it’s exploring AI for development optimization or mastering new
+          technologies. My approach is grounded in thoughtful planning, iterative improvement, and a strong commitment
+          to delivering quality results.
         </Typography>
       </Box>
     </Box>
