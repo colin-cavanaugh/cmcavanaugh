@@ -1,4 +1,12 @@
-import { Box, IconButton, SpeedDial, SpeedDialAction, SpeedDialIcon, Tooltip, useTheme } from '@mui/material'
+import {
+  Box,
+  IconButton,
+  SpeedDial,
+  SpeedDialAction,
+  SpeedDialIcon,
+  Tooltip,
+  useTheme,
+} from '@mui/material'
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary'
 import AssignmentIcon from '@mui/icons-material/Assignment'
 import { Section } from '../library/matter-ui-section'
@@ -13,39 +21,103 @@ import ContrastIcon from '@mui/icons-material/Contrast'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import HomeIcon from '@mui/icons-material/Home'
 import { Letter } from '../library/matter-ui-letter'
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
 
 const getActions = (theme: Theme, currentThemeMode: ThemeMode) => {
   const themeMap: Record<ThemeMode, { icon: JSX.Element; name: string }> = {
     light: {
-      icon: <DarkModeIcon color='primary' style={{ height: 35, width: 35, color: theme.palette.background.custom }} />,
+      icon: (
+        <DarkModeIcon
+          color="primary"
+          style={{
+            height: 35,
+            width: 35,
+            color: theme.palette.background.custom,
+          }}
+        />
+      ),
       name: 'Dark',
     },
     dark: {
-      icon: <ContrastIcon style={{ height: 35, width: 35, color: theme.palette.background.custom }} />,
+      icon: (
+        <ContrastIcon
+          style={{
+            height: 35,
+            width: 35,
+            color: theme.palette.background.custom,
+          }}
+        />
+      ),
       name: 'Custom',
     },
     custom: {
-      icon: <LightModeIcon style={{ height: 35, width: 35, color: theme.palette.background.custom }} />,
+      icon: (
+        <LightModeIcon
+          style={{
+            height: 35,
+            width: 35,
+            color: theme.palette.background.custom,
+          }}
+        />
+      ),
       name: 'Light',
     },
   }
 
   return [
     {
-      icon: <HomeIcon style={{ height: 35, width: 35, color: theme.palette.background.icon }} />,
+      icon: (
+        <HomeIcon
+          style={{
+            height: 35,
+            width: 35,
+            color: theme.palette.background.icon,
+          }}
+        />
+      ),
       name: 'Home',
       action: 'link',
       link: '/',
     },
     {
-      icon: <LocalLibraryIcon style={{ height: 35, width: 35, color: theme.palette.background.icon }} />,
+      icon: (
+        <EmojiPeopleIcon
+          style={{
+            height: 35,
+            width: 35,
+            color: theme.palette.background.icon,
+          }}
+        />
+      ),
+      name: 'Personal Life',
+      action: 'link',
+      link: '/personallife',
+    },
+    {
+      icon: (
+        <LocalLibraryIcon
+          style={{
+            height: 35,
+            width: 35,
+            color: theme.palette.background.icon,
+          }}
+        />
+      ),
       name: 'Matter UI',
       action: 'link',
       link: '/matterui',
     },
     {
-      icon: <AssignmentIcon style={{ height: 35, width: 35, color: theme.palette.background.icon }} />,
-      name: 'Résumé',
+      icon: (
+        <AssignmentIcon
+          style={{
+            height: 35,
+            width: 35,
+            color: theme.palette.background.icon,
+          }}
+        />
+      ),
+      name: 'Resumé',
       action: 'download',
     },
     {
@@ -68,11 +140,11 @@ const MenuSpeedDial = () => {
   return (
     <Section>
       <SpeedDial
-        ariaLabel='Navigation'
+        ariaLabel="Navigation"
         sx={{
           position: 'absolute',
-          bottom: 16,
-          right: 16,
+          bottom: 16, // Keeps it at the bottom
+          right: 16, // Changed from right: 16 to left: 16
           '.MuiSpeedDialAction-staticTooltipLabel': {
             bgcolor: 'transparent',
             boxShadow: 'none',
@@ -85,46 +157,42 @@ const MenuSpeedDial = () => {
         FabProps={{ style: { height: 65, width: 65 } }}
         icon={
           <SpeedDialIcon
-            sx={{ height: 45, width: 45 }}
+            sx={{
+              height: 45,
+              width: 45,
+            }}
             icon={<NavigationIcon sx={{ height: 45, width: 45 }} />}
             openIcon={<NorthIcon sx={{ height: 45, width: 45 }} />}
           />
         }
-        direction='up'
+        direction="up"
       >
-        {getActions(theme, mode).map(action => (
+        {getActions(theme, mode).map((action) => (
           <SpeedDialAction
             key={action.name}
             icon={action.icon}
-            tooltipPlacement='left'
-            tooltipOpen={true}
+            tooltipPlacement="left"
             tooltipTitle={
-              <Box
-                sx={{
-                  minWidth: 150,
-                  backgroundColor: theme.palette.background.blur,
+              <Letter
+                look={{
+                  bgColor: theme.palette.background.blur,
+                  // backgroundColor: 'transparent',
+                  // color: theme.palette.text.primary,
+                  boxShadow: 'none',
+                  // width: '100%',
+                  height: '100%',
+                  textAlign: 'center',
+                  fontWeight: 'bolder',
+                  p: 14,
+                  fontSize: 22,
                 }}
               >
-                <Letter
-                  look={{
-                    bgColor: theme.palette.background.blur,
-                    color: theme.palette.text.primary,
-                    boxShadow: 'none',
-                    width: '100%',
-                    height: '100%',
-                    textAlign: 'left',
-                    minWidth: 150,
-                    fontWeight: 'bolder',
-                    fontSize: 18,
-                    p: 22,
-                    paddingLeft: 8,
-                  }}
-                >
-                  {action?.name}
-                </Letter>
-              </Box>
+                {action?.name}
+              </Letter>
             }
-            sx={{ fontSize: 34 }}
+            sx={{
+              fontSize: 34,
+            }}
             FabProps={{ style: { height: 55, width: 55 }, size: 'large' }}
             onClick={() => {
               if (action.action === 'link') {

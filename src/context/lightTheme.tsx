@@ -23,5 +23,19 @@ export const lightTheme = createTheme({
         },
       },
     },
+    MuiTooltip: {
+      styleOverrides: {
+        tooltip: {
+          backgroundColor: 'transparent', // 🔥 Custom tooltip background
+          color: 'rgba(0,0,0,1)', // ✅ Ensure text is visible
+          fontWeight: 'bold',
+          borderRadius: '6px',
+          padding: '8px 12px',
+        },
+        arrow: {
+          color: '#FF5733', // ✅ Matches tooltip background
+        },
+      },
+    },
   },
 })

@@ -15,7 +15,12 @@ const Header = () => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md')) // `md` and below (tablet & mobile)
 
   // ✅ Update title based on the current route
-  const headerTitle = pathName === '/' ? 'About' : pathName === '/matterui' ? 'Matter UI' : 'Not Found'
+  const headerTitle =
+    pathName === '/'
+      ? 'About'
+      : pathName === '/matterui'
+      ? 'Matter UI'
+      : 'Not Found'
 
   return (
     <Section
@@ -48,10 +53,25 @@ const Header = () => {
           src={'/groheadshot.jpg'}
           onClick={() => router.navigate({ to: '/' })}
         />
-        <Letter look={{ fontSize: isSmallScreen ? 24 : 50, textAlign: 'center' }}>{headerTitle}</Letter>
-        <Letter look={{ fontSize: isSmallScreen ? 18 : 28, textAlign: 'center' }}>Colin Cavanaugh</Letter>
+        <Letter
+          look={{ fontSize: isSmallScreen ? 24 : 50, textAlign: 'center' }}
+        >
+          {headerTitle}
+        </Letter>
+        <Letter
+          look={{ fontSize: isSmallScreen ? 18 : 28, textAlign: 'center' }}
+        >
+          Colin Cavanaugh
+        </Letter>
       </GridItem>
-      <Divider sx={{ opacity: 0.2, backgroundColor: theme.palette.text.primary, height: '1px', width: '100%' }} />
+      <Divider
+        sx={{
+          opacity: 0.2,
+          backgroundColor: theme.palette.text.primary,
+          height: '1px',
+          width: '100%',
+        }}
+      />
     </Section>
   )
 }
