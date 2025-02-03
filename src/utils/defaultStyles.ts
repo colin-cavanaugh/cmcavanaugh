@@ -46,29 +46,30 @@ export const defaultStyles = {
     boxSizing: 'border-box', // To include padding in the container width
   }),
   Letter: css({
+    display: 'block',
     fontSize: 16,
     fontFamily: 'Muli, sans-serif',
     padding: 0,
     margin: 0,
   }),
-  GridItem: (xs = 12, sm?: number, md?: number, lg?: number, xl?: number) =>
+  GridItem: (xs = 12, sm = xs, md = sm, lg = md, xl = lg) =>
     css({
       gridColumn: `span ${xs}`, // Default for mobile
       '@media (min-width: 600px)': {
-        gridColumn: sm ? `span ${sm}` : `span ${xs}`, // Responsive for `sm`
+        gridColumn: `span ${sm}`, // Responsive for `sm`
       },
       '@media (min-width: 900px)': {
-        gridColumn: md ? `span ${md}` : sm ? `span ${sm}` : `span ${xs}`, // Responsive for `md`
+        gridColumn: `span ${md}`, // Responsive for `md`
       },
       '@media (min-width: 1200px)': {
-        gridColumn: lg ? `span ${lg}` : md ? `span ${md}` : sm ? `span ${sm}` : `span ${xs}`, // Responsive for `lg`
+        gridColumn: `span ${lg}`, // Responsive for `lg`
       },
       '@media (min-width: 1536px)': {
-        gridColumn: xl ? `span ${xl}` : lg ? `span ${lg}` : md ? `span ${md}` : sm ? `span ${sm}` : `span ${xs}`, // Responsive for `xl`
+        gridColumn: `span ${xl}`, // Responsive for `xl`
       },
       width: '100%', // Ensure it spans the full width of the column
-      padding: '16px', // Optional item padding
-      boxSizing: 'border-box', // Ensure padding is included in width calculations
+      padding: '16px',
+      boxSizing: 'border-box',
       borderRadius: '8px',
     }),
   Profile: css({

@@ -2,15 +2,16 @@ import React from 'react'
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material'
 import { router } from '../routes/routes'
 import { Profile } from '../library/matter-ui-profile'
+import { Section } from '../library/matter-ui-section'
+import { Letter } from '../library/matter-ui-letter'
 
 const AboutMe = () => {
   const theme = useTheme()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm')) // Small screens
   const isMediumScreen = useMediaQuery(theme.breakpoints.down('md')) // Tablets & below
-
   return (
-    <Box
-      sx={{
+    <Section
+      look={{
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center', // ✅ Centers vertically
@@ -21,8 +22,8 @@ const AboutMe = () => {
       }}
     >
       {/* Profile Picture on the Left */}
-      <Box
-        sx={{
+      <Section
+        look={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -36,44 +37,46 @@ const AboutMe = () => {
             borderRadius: '50%',
             cursor: 'pointer',
           }}
-          src={'./src/img/coloradoPicCropped.jpg'}
+          src={'/coloradoPicCropped.png'}
           onClick={() => router.navigate({ to: '/' })}
         />
-      </Box>
+      </Section>
 
       {/* Right Side Content */}
-      <Box
-        sx={{
+      <Section
+        look={{
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center', // ✅ Ensures vertical centering
+          alignItems: 'flex-start',
           maxWidth: '750px', // Prevents stretching on large screens
           textAlign: 'left',
+          gap: 10,
         }}
       >
         {/* Name & Title */}
-        <Typography
-          sx={{
+        <Letter
+          look={{
             fontSize: isSmallScreen ? 32 : 48,
             color: theme.palette.text.title,
             fontWeight: 'bold',
           }}
         >
           Colin M. Cavanaugh
-        </Typography>
-        <Typography
-          sx={{
+        </Letter>
+        <Letter
+          look={{
             fontSize: isSmallScreen ? 20 : 28,
             color: theme.palette.text.title,
             fontWeight: 'bold',
           }}
         >
           Full Stack Developer
-        </Typography>
+        </Letter>
 
         {/* About Me Description */}
-        <Typography
-          sx={{
+        <Letter
+          look={{
             fontSize: isSmallScreen ? 14 : 18,
             lineHeight: 1.75,
             marginTop: 2,
@@ -84,10 +87,10 @@ const AboutMe = () => {
           internal CRM and workflow management system, where I honed my skills in React, Node.js, DynamoDB, and AWS
           services. This project not only solidified my technical expertise but also ignited my passion for crafting
           solutions that make a meaningful impact on both users and teams.
-        </Typography>
+        </Letter>
 
-        <Typography
-          sx={{
+        <Letter
+          look={{
             fontSize: isSmallScreen ? 14 : 18,
             lineHeight: 1.75,
             marginTop: 2,
@@ -98,9 +101,10 @@ const AboutMe = () => {
           curious and love to learn, whether it’s exploring AI for development optimization or mastering new
           technologies. My approach is grounded in thoughtful planning, iterative improvement, and a strong commitment
           to delivering quality results.
-        </Typography>
-      </Box>
-    </Box>
+        </Letter>
+      </Section>
+      <Box></Box>
+    </Section>
   )
 }
 

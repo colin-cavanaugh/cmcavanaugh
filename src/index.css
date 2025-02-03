@@ -15,8 +15,7 @@ body,
 }
 
 body {
-  font-family: 'Inter', 'IBM Plex Sans', 'Arial', 'Helvetica', 'Poppins',
-    'Tahoma', sans-serif;
+  font-family: 'Inter', 'IBM Plex Sans', 'Arial', 'Helvetica', 'Poppins', 'Tahoma', sans-serif;
   display: flex;
   align-items: center; /* Center content vertically */
   justify-content: center; /* Center content horizontally */

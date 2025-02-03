@@ -5,7 +5,6 @@ import { defaultStyles } from '../utils/defaultStyles'
 import { processLook } from '../utils/processLook'
 
 export const Letter: React.FC<BaseProps<HTMLDivElement>> = ({ look = {}, style, ...props }) => {
-  // Convert styles to Emotion-compatible styles
   const lookStyles = css(processLook(look))
   const inlineStyles = style ? css(style as Record<string, any>) : undefined
 

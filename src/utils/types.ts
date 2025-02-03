@@ -1,29 +1,48 @@
 import React, { CSSProperties } from 'react'
 
 export interface Look extends CSSProperties {
-  m?: number | string // Margin shorthand
-  p?: number | string // Padding shorthand
+  // ✅ Margin Shorthand Properties
+  m?: number | string
+  mx?: number | string
+  my?: number | string
+  mt?: number | string
+  mb?: number | string
+  ml?: number | string
+  mr?: number | string
+  marginX?: number | string
+  marginY?: number | string
+  // ✅ Padding Shorthand Properties
+  p?: number | string
+  px?: number | string
   py?: number | string
+  pt?: number | string
+  pb?: number | string
+  pl?: number | string
+  pr?: number | string
+  paddingX?: number | string
+  paddingY?: number | string
+
   gap?: number | string
-  flex?: string | number // Flex value (e.g., flex: 1 or flex: '1 1 auto')
+  flex?: number | string
   height?: number | string
   width?: number | string
-  flexDirection?: 'row' | 'column' | 'row-reverse' | 'column-reverse' // Flex direction
-  justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' // Alignment along the main axis
-  alignItems?: 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline' // Alignment along the cross axis
-  alignSelf?: 'auto' | 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline' // Overrides alignItems for a specific item
-  flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse' // Flex wrapping
-  flexGrow?: number // Specifies how much a flex item grows
-  flexShrink?: number // Specifies how much a flex item shrinks
-  flexBasis?: string | number // Basis size of a flex item
-  order?: number // Specifies the order of the flex item
+  flexDirection?: 'row' | 'column' | 'row-reverse' | 'column-reverse'
+  justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
+  alignItems?: 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline'
+  alignSelf?: 'auto' | 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline'
+  flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse'
+  flexGrow?: number
+  flexShrink?: number
+  flexBasis?: string | number
+  order?: number
   border?: string
-  bgColor?: string // Background color
-  borderColor?: string // Border color
-  radius?: number | string // Border radius
-  fontSize?: string | number // Font size
-  customStyles?: Record<string, string | number> // Additional custom styles
+  bgColor?: string
+  borderColor?: string
+  radius?: number | string
+  fontSize?: string | number
+  customStyles?: Record<string, string | number>
 }
+
 // Shared props for components with `look`
 export interface BaseProps<T = HTMLElement> extends React.HTMLAttributes<T> {
   look?: Look // For overriding styles
@@ -31,6 +50,7 @@ export interface BaseProps<T = HTMLElement> extends React.HTMLAttributes<T> {
   children?: React.ReactNode
 }
 export interface GridItemProps extends BaseProps<HTMLDivElement> {
+  area?: number
   xs?: number // Columns on extra-small screens (e.g., mobile)
   sm?: number // Columns on small screens
   md?: number // Columns on medium screens
