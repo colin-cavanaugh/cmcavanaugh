@@ -29,7 +29,6 @@ export const defaultStyles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
     maxHeight: '100vh', // Full height
     maxWidth: '100vw', // Full width
     padding: '12px',
@@ -52,24 +51,18 @@ export const defaultStyles = {
     padding: 0,
     margin: 0,
   }),
-  GridItem: (xs = 12, sm = xs, md = sm, lg = md, xl = lg) =>
+  GridItem: (area = 12) =>
     css({
-      gridColumn: `span ${xs}`, // Default for mobile
+      gridColumn: `span ${area} / span ${area}`, // ✅ Ensures proper column spanning
       '@media (min-width: 600px)': {
-        gridColumn: `span ${sm}`, // Responsive for `sm`
+        gridColumn: `span ${area}`,
       },
       '@media (min-width: 900px)': {
-        gridColumn: `span ${md}`, // Responsive for `md`
+        gridColumn: `span ${area}`,
       },
-      '@media (min-width: 1200px)': {
-        gridColumn: `span ${lg}`, // Responsive for `lg`
-      },
-      '@media (min-width: 1536px)': {
-        gridColumn: `span ${xl}`, // Responsive for `xl`
-      },
-      width: '100%', // Ensure it spans the full width of the column
-      padding: '16px',
+      width: '100%',
       boxSizing: 'border-box',
+      padding: '10px',
       borderRadius: '8px',
     }),
   Profile: css({

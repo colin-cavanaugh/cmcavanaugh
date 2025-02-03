@@ -1,17 +1,18 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react' // Import `css` from Emotion
+import React from 'react'
+import { css } from '@emotion/react'
 import { BaseProps } from '../utils/types'
 import { defaultStyles } from '../utils/defaultStyles'
 import { processLook } from '../utils/processLook'
 
-export const GridContainer: React.FC<BaseProps<HTMLDivElement>> = ({ children, look = {}, style, ...props }) => {
-  // Convert styles to Emotion-compatible styles
-  const lookStyles = css(processLook(look))
-  const inlineStyles = style ? css(style as Record<string, any>) : undefined
+export const GridContainer: React.FC<BaseProps<HTMLDivElement>> = ({ look = {}, style, ...props }) => {
+  const defaultGridStyles = defaultStyles.GridContainer // ✅ Always include default grid styles
+  const lookStyles = css(processLook(look)) // ✅ Process `look` overrides
+  const inlineStyles = style ? css(style as Record<string, any>) : undefined // ✅ Apply inline styles if present
 
   return (
-    <div css={[defaultStyles.GridContainer, lookStyles, inlineStyles]} {...props}>
-      {children}
+    <div css={[defaultGridStyles, lookStyles, inlineStyles]} {...props}>
+      {props.children}
     </div>
   )
 }

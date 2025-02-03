@@ -1,30 +1,21 @@
-import {
-  Outlet,
-  createRouter,
-  createRoute,
-  createRootRoute,
-} from '@tanstack/react-router'
+import { Outlet, createRouter, createRoute, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 import App from '../App'
-import AboutMe from '../components/AboutMe'
+import About from '../components/About'
 import MatterUi from '../components/MatterUi'
 import PersonalLife from '../components/PersonalLife'
+import { Box } from '@mui/material'
 
 const rootRoute = createRootRoute({
   component: () => {
-    return (
-      <>
-        <App />
-        {/* <TanStackRouterDevtools /> */}
-      </>
-    )
+    return <App />
   },
 })
 
 const homeRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/',
-  component: AboutMe,
+  component: About,
 })
 const matterUiRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -41,12 +32,7 @@ const notFoundRoute = createRoute({
   path: '*',
   component: () => <div>404 - Page Not Found</div>,
 })
-const routeTree = rootRoute.addChildren([
-  homeRoute,
-  matterUiRoute,
-  personalLifeRoute,
-  notFoundRoute,
-])
+const routeTree = rootRoute.addChildren([homeRoute, matterUiRoute, personalLifeRoute, notFoundRoute])
 
 export const router = createRouter({ routeTree })
 

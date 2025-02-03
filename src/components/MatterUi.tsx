@@ -18,96 +18,168 @@ interface MatterUiProps {
 
 const MatterUi: React.FC<MatterUiProps> = () => {
   const [itemArea, setItemArea] = useState<number>(12)
+  const [itemArea2, setItemArea2] = useState<number>(12)
   const [fontSize, setFontSize] = useState<number>(16)
   const [borderColor, setBorderColor] = useState<string>('rgb(98, 211, 233)')
   const [borderWidth, setBorderWidth] = useState<number>(2)
   const [padding, setPadding] = useState<number>(10)
+  const [fontSize2, setFontSize2] = useState<number>(16)
+  const [borderColor2, setBorderColor2] = useState<string>('rgb(222, 30, 196)')
+  const [borderWidth2, setBorderWidth2] = useState<number>(2)
+  const [padding2, setPadding2] = useState<number>(10)
   const theme = useTheme()
-  const gridItemProps = (borderColor: string) => ({
-    xs: 12,
-    sm: 12,
-    mg: 8,
-    lg: 6,
-    xl: 4,
-    look: {
-      border: '2px solid',
-      borderColor: borderColor,
-      display: 'flex',
-    },
-  })
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    ...theme.applyStyles('dark', {
-      backgroundColor: '#1A2027',
-    }),
-  }))
   return (
-    // <GridContainer
-    //   look={{
-    //     border: '3px solid',
-    //     borderColor: theme.palette.text.primary,
-    //     radius: 10,
-    //     gap: 6,
-    //   }}
-    // >
     <>
-      <Section look={{ padding: 20, border: '2px solid black', radius: 10 }}>
-        <Letter look={{ fontSize: 24, fontWeight: 'bold' }}>Customize Grid Item</Letter>
-
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-          {/* Font Size Slider */}
-          <Box>
-            <Letter>Font Size: {fontSize}px</Letter>
-            <Slider min={10} max={40} value={fontSize} onChange={(e, value) => setFontSize(value as number)} />
-          </Box>
-
-          {/* Border Color Picker */}
-          <InputLabel sx={{ color: 'black' }}>Border Color</InputLabel>
-          <TextField
-            // label='Border Color'
-            type='text'
-            value={borderColor}
-            onChange={e => setBorderColor(e.target.value)}
-            fullWidth
-          />
-
-          {/* Border Width */}
-          <Box>
-            <Letter>Border Width: {borderWidth}px</Letter>
-            <Slider min={1} max={10} value={borderWidth} onChange={(e, value) => setBorderWidth(value as number)} />
-          </Box>
-
-          {/* Padding Control */}
-          <Box>
-            <Letter>Padding: {padding}px</Letter>
-            <Slider min={0} max={40} value={padding} onChange={(e, value) => setPadding(value as number)} />
-          </Box>
-
-          {/* Grid Item Area */}
-          <Box>
-            <Letter>Area: {itemArea}</Letter>
-            <Slider min={1} max={12} value={itemArea} onChange={(_, value) => setItemArea(value as number)} />
-          </Box>
-        </Box>
-
-        {/* Live Preview of Grid Item */}
-      </Section>
       <GridContainer>
+        <GridItem area={6}>
+          <Section look={{ border: '2px solid', borderColor: theme.palette.text.primary }}>
+            <GridItem area={12} look={{ display: 'flex', flexDirection: 'column', gap: 1, width: '100%' }}>
+              <Letter look={{ fontSize: 24, fontWeight: 'bold' }}>Customize Grid Item</Letter>
+
+              {/* Font Size Slider */}
+              <Letter>Font Size: {fontSize}px</Letter>
+              <Slider min={10} max={40} value={fontSize} onChange={(e, value) => setFontSize(value as number)} />
+
+              {/* Border Color Picker */}
+              <Letter look={{ color: 'black' }}>Border Color</Letter>
+              <TextField
+                // label='Border Color'
+                type='text'
+                value={borderColor}
+                onChange={e => setBorderColor(e.target.value)}
+                fullWidth
+              />
+              {/* Border Width */}
+              <Letter>Border Width: {borderWidth}px</Letter>
+              <Slider min={1} max={10} value={borderWidth} onChange={(e, value) => setBorderWidth(value as number)} />
+
+              {/* Padding Control */}
+              <Letter>Padding: {padding}px</Letter>
+              <Slider min={0} max={40} value={padding} onChange={(e, value) => setPadding(value as number)} />
+
+              {/* Grid Item Area */}
+              <Letter>Area: {itemArea}</Letter>
+              <Slider min={1} max={12} value={itemArea} onChange={(_, value) => setItemArea(value as number)} />
+            </GridItem>
+          </Section>
+        </GridItem>
+        <GridItem area={6}>
+          <Section look={{ border: '2px solid', borderColor: theme.palette.text.primary }}>
+            <GridItem area={12} look={{ display: 'flex', flexDirection: 'column', gap: 1, width: '100%' }}>
+              <Letter look={{ fontSize: 24, fontWeight: 'bold' }}>Customize Grid Item 2</Letter>
+
+              {/* Font Size Slider */}
+              <Letter>Font Size: {fontSize2}px</Letter>
+              <Slider
+                min={10}
+                max={40}
+                value={fontSize2}
+                onChange={(e, value) => setFontSize2(value as number)}
+                sx={{ color: 'rgb(231, 132, 99)' }}
+              />
+
+              {/* Border Color Picker */}
+              <Letter look={{ color: 'black' }}>Border Color</Letter>
+              <TextField
+                // label='Border Color'
+                type='text'
+                value={borderColor2}
+                onChange={e => setBorderColor2(e.target.value)}
+                fullWidth
+              />
+
+              {/* Border Width */}
+              <Letter>Border Width: {borderWidth}px</Letter>
+              <Slider
+                min={1}
+                max={10}
+                value={borderWidth2}
+                onChange={(e, value) => setBorderWidth2(value as number)}
+                sx={{ color: 'rgb(231, 132, 99)' }}
+              />
+
+              {/* Padding Control */}
+              <Letter>Padding: {padding2}px</Letter>
+              <Slider
+                min={0}
+                max={40}
+                value={padding2}
+                onChange={(e, value) => setPadding2(value as number)}
+                sx={{ color: 'rgb(231, 132, 99)' }}
+              />
+
+              {/* Grid Item Area */}
+              <Letter>Area: {itemArea2}</Letter>
+              <Slider
+                min={1}
+                max={12}
+                value={itemArea2}
+                onChange={(_, value) => setItemArea2(value as number)}
+                sx={{ color: 'rgb(231, 132, 99)' }}
+              />
+            </GridItem>
+          </Section>
+        </GridItem>
+      </GridContainer>
+      <GridContainer>
+        {/* Live Preview of Grid Item */}
+        {/* </GridContainer> */}
+        {/* <GridContainer> */}
         <GridItem area={12}>
           <Letter look={{ fontSize: 22, fontWeight: 'bold', textAlign: 'center' }}>{'Grid Container'}</Letter>
         </GridItem>
         {/* Interactive Section */}
         <GridItem
           area={itemArea}
-          look={{ fontSize: fontSize, border: `${borderWidth}px solid`, borderColor: borderColor, padding: padding }}
+          look={{
+            border: `${borderWidth}px solid`,
+            borderColor: borderColor,
+            padding: padding,
+            overflow: 'hidden', // ✅ Ensures content doesn't overflow its container
+            textOverflow: 'ellipsis', // ✅ Enables ellipsis for text overflow
+            whiteSpace: 'nowrap', // ✅ Prevents wrapping
+            width: '100%', // ✅ Ensures it takes the full width of the container
+          }}
         >
-          Responsive Grid Item {itemArea}
+          <Letter
+            look={{
+              fontSize: fontSize,
+              whiteSpace: 'nowrap', // ✅ Prevents wrapping
+              overflow: 'hidden', // ✅ Hides overflowing content
+              textOverflow: 'ellipsis', // ✅ Shows "..." when text overflows
+              display: 'block', // ✅ Ensures it behaves as a block element
+              width: '100%', // ✅ Ensures the ellipsis works correctly
+            }}
+          >
+            Responsive Grid Item {itemArea}
+          </Letter>
         </GridItem>
-        <GridItem area={6} look={{ border: `2px solid rgb(255, 148, 112)` }}>
+        <GridItem
+          area={itemArea2}
+          look={{
+            border: `${borderWidth2}px solid`,
+            borderColor: borderColor2,
+            padding: padding2,
+            overflow: 'hidden', // ✅ Ensures content doesn't overflow its container
+            textOverflow: 'ellipsis', // ✅ Enables ellipsis for text overflow
+            whiteSpace: 'nowrap', // ✅ Prevents wrapping
+            width: '100%', // ✅ Ensures it takes the full width of the container
+          }}
+        >
+          <Letter
+            look={{
+              fontSize: fontSize2,
+              whiteSpace: 'nowrap', // ✅ Prevents wrapping
+              overflow: 'hidden', // ✅ Hides overflowing content
+              textOverflow: 'ellipsis', // ✅ Shows "..." when text overflows
+              display: 'block', // ✅ Ensures it behaves as a block element
+              width: '100%', // ✅ Ensures the ellipsis works correctly
+            }}
+          >
+            Responsive Grid Item Two {itemArea2}
+          </Letter>
+        </GridItem>
+        {/* <GridItem area={6} look={{ border: `2px solid rgb(255, 148, 112)` }}>
           Area = 6
         </GridItem>
         <GridItem area={1} look={{ border: `2px solid rgb(255, 148, 112)` }}>
@@ -118,7 +190,7 @@ const MatterUi: React.FC<MatterUiProps> = () => {
         </GridItem>
         <GridItem area={3} look={{ border: `2px solid rgb(255, 148, 112)` }}>
           Area = 3
-        </GridItem>
+        </GridItem> */}
       </GridContainer>
     </>
   )

@@ -1,33 +1,41 @@
 import React from 'react'
 import { Outlet } from '@tanstack/react-router'
 import { Box } from '@mui/material'
-import Header from './components/Header'
 import MenuSpeedDial from './components/MenuSpeedDial'
-import { Section } from './library/matter-ui-section'
+import { GridContainer } from './library/matter-ui-gridcontainer'
 
 const App = () => {
   return (
-    <Section
-      look={{
+    <Box
+      sx={{
+        height: '100dvh', // Ensures the container covers the full viewport
         display: 'flex',
-        flexDirection: 'column',
-        height: '100vh', // Ensure it takes full screen height
-        width: '100vw',
-        overflow: 'hidden', // Prevent unintended scrolling
+        overflow: 'hidden', // Prevents double scrollbars
       }}
     >
-      <Section
-        look={{
-          flexGrow: 1, // Makes content take up remaining space
-          overflowY: 'auto', // Allows scrolling within content
+      {/* Main Content with Scrollability */}
+      <Box
+        sx={{
+          flex: 1, // Takes up remaining space
           width: '100%',
-          padding: 2, // Adds spacing
+          overflowY: 'auto', // Enables scrolling only for content
         }}
       >
         <Outlet />
-      </Section>
-      <MenuSpeedDial />
-    </Section>
+      </Box>
+
+      {/* SpeedDial Fixed at Bottom Right */}
+      <Box
+        sx={{
+          position: 'fixed',
+          bottom: '16px',
+          right: '16px',
+          zIndex: 1000, // Ensures it's above other content
+        }}
+      >
+        <MenuSpeedDial />
+      </Box>
+    </Box>
   )
 }
 

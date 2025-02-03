@@ -5,6 +5,7 @@ import {
   SpeedDialAction,
   SpeedDialIcon,
   Tooltip,
+  useMediaQuery,
   useTheme,
 } from '@mui/material'
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary'
@@ -23,15 +24,15 @@ import HomeIcon from '@mui/icons-material/Home'
 import { Letter } from '../library/matter-ui-letter'
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
 
-const getActions = (theme: Theme, currentThemeMode: ThemeMode) => {
+const getActions = (theme: Theme, currentThemeMode: ThemeMode, isSmallScreen: boolean) => {
   const themeMap: Record<ThemeMode, { icon: JSX.Element; name: string }> = {
     light: {
       icon: (
         <DarkModeIcon
-          color="primary"
+          color='primary'
           style={{
-            height: 35,
-            width: 35,
+            height: isSmallScreen ? 25 : 35,
+            width: isSmallScreen ? 25 : 35,
             color: theme.palette.background.custom,
           }}
         />
@@ -42,8 +43,8 @@ const getActions = (theme: Theme, currentThemeMode: ThemeMode) => {
       icon: (
         <ContrastIcon
           style={{
-            height: 35,
-            width: 35,
+            height: isSmallScreen ? 25 : 35,
+            width: isSmallScreen ? 25 : 35,
             color: theme.palette.background.custom,
           }}
         />
@@ -54,8 +55,8 @@ const getActions = (theme: Theme, currentThemeMode: ThemeMode) => {
       icon: (
         <LightModeIcon
           style={{
-            height: 35,
-            width: 35,
+            height: isSmallScreen ? 25 : 35,
+            width: isSmallScreen ? 25 : 35,
             color: theme.palette.background.custom,
           }}
         />
@@ -69,8 +70,8 @@ const getActions = (theme: Theme, currentThemeMode: ThemeMode) => {
       icon: (
         <HomeIcon
           style={{
-            height: 35,
-            width: 35,
+            height: isSmallScreen ? 25 : 35,
+            width: isSmallScreen ? 25 : 35,
             color: theme.palette.background.icon,
           }}
         />
@@ -83,8 +84,8 @@ const getActions = (theme: Theme, currentThemeMode: ThemeMode) => {
       icon: (
         <EmojiPeopleIcon
           style={{
-            height: 35,
-            width: 35,
+            height: isSmallScreen ? 25 : 35,
+            width: isSmallScreen ? 25 : 35,
             color: theme.palette.background.icon,
           }}
         />
@@ -97,8 +98,8 @@ const getActions = (theme: Theme, currentThemeMode: ThemeMode) => {
       icon: (
         <LocalLibraryIcon
           style={{
-            height: 35,
-            width: 35,
+            height: isSmallScreen ? 25 : 35,
+            width: isSmallScreen ? 25 : 35,
             color: theme.palette.background.icon,
           }}
         />
@@ -111,8 +112,8 @@ const getActions = (theme: Theme, currentThemeMode: ThemeMode) => {
       icon: (
         <AssignmentIcon
           style={{
-            height: 35,
-            width: 35,
+            height: isSmallScreen ? 25 : 35,
+            width: isSmallScreen ? 25 : 35,
             color: theme.palette.background.icon,
           }}
         />
@@ -132,81 +133,90 @@ const MenuSpeedDial = () => {
   const theme = useTheme()
   const { mode, toggleTheme } = useThemeContext()
   const router = useRouter()
-
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
+  const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'))
   const handleDownload = () => {
     window.open('/resume.pdf', '_blank')
   }
 
   return (
-    <Section>
-      <SpeedDial
-        ariaLabel="Navigation"
-        sx={{
-          position: 'absolute',
-          bottom: 16, // Keeps it at the bottom
-          right: 16, // Changed from right: 16 to left: 16
-          '.MuiSpeedDialAction-staticTooltipLabel': {
-            bgcolor: 'transparent',
-            boxShadow: 'none',
-            width: '100%',
-            textAlign: 'left',
-            minWidth: 100,
-            fontWeight: 'bold',
-          },
-        }}
-        FabProps={{ style: { height: 65, width: 65 } }}
-        icon={
-          <SpeedDialIcon
-            sx={{
-              height: 45,
-              width: 45,
-            }}
-            icon={<NavigationIcon sx={{ height: 45, width: 45 }} />}
-            openIcon={<NorthIcon sx={{ height: 45, width: 45 }} />}
-          />
-        }
-        direction="up"
-      >
-        {getActions(theme, mode).map((action) => (
-          <SpeedDialAction
-            key={action.name}
-            icon={action.icon}
-            tooltipPlacement="left"
-            tooltipTitle={
-              <Letter
-                look={{
-                  bgColor: theme.palette.background.blur,
-                  // backgroundColor: 'transparent',
-                  // color: theme.palette.text.primary,
-                  boxShadow: 'none',
-                  // width: '100%',
-                  height: '100%',
-                  textAlign: 'center',
-                  fontWeight: 'bolder',
-                  p: 14,
-                  fontSize: 22,
-                }}
-              >
-                {action?.name}
-              </Letter>
+    <SpeedDial
+      ariaLabel='Navigation'
+      sx={{
+        position: 'absolute',
+        bottom: 16, // Keeps it at the bottom
+        right: 16, // Changed from right: 16 to left: 16
+        '.MuiSpeedDialAction-staticTooltipLabel': {
+          bgcolor: 'transparent',
+          boxShadow: 'none',
+          width: '100%',
+          textAlign: 'left',
+          minWidth: 100,
+          fontWeight: 'bold',
+          zIndex: 1000,
+        },
+      }}
+      FabProps={{ style: { height: isSmallScreen ? 45 : 65, width: isSmallScreen ? 45 : 65 } }}
+      icon={
+        <SpeedDialIcon
+          sx={{
+            height: isSmallScreen ? 25 : 45,
+            width: isSmallScreen ? 25 : 45,
+          }}
+          icon={
+            <NavigationIcon
+              sx={{
+                height: isSmallScreen ? 25 : 45,
+                width: isSmallScreen ? 25 : 45,
+              }}
+            />
+          }
+          openIcon={
+            <NorthIcon
+              sx={{
+                height: isSmallScreen ? 25 : 45,
+                width: isSmallScreen ? 25 : 45,
+              }}
+            />
+          }
+        />
+      }
+      direction={isSmallScreen ? 'up' : 'left'}
+    >
+      {getActions(theme, mode, isSmallScreen).map(action => (
+        <SpeedDialAction
+          key={action.name}
+          icon={action.icon}
+          tooltipPlacement={isSmallScreen ? 'left' : 'top'}
+          tooltipTitle={
+            <Letter
+              look={{
+                bgColor: theme.palette.background.blur,
+                boxShadow: 'none',
+                textAlign: 'center',
+                fontWeight: 'bolder',
+                fontSize: isSmallScreen ? 16 : 22,
+              }}
+            >
+              {action?.name}
+            </Letter>
+          }
+          sx={{
+            fontSize: 34,
+          }}
+          FabProps={{ style: { height: isSmallScreen ? 45 : 55, width: isSmallScreen ? 45 : 55 }, size: 'large' }}
+          onClick={() => {
+            if (action.action === 'link') {
+              router.navigate({ to: action.link })
+            } else if (action.action === 'download') {
+              handleDownload()
+            } else if (action.action === 'toggle') {
+              toggleTheme()
             }
-            sx={{
-              fontSize: 34,
-            }}
-            FabProps={{ style: { height: 55, width: 55 }, size: 'large' }}
-            onClick={() => {
-              if (action.action === 'link') {
-                router.navigate({ to: action.link })
-              } else if (action.action === 'download') {
-                handleDownload()
-              } else if (action.action === 'toggle') {
-                toggleTheme()
-              }
-            }}
-          />
-        ))}
-      </SpeedDial>
-    </Section>
+          }}
+        />
+      ))}
+    </SpeedDial>
   )
 }
 
