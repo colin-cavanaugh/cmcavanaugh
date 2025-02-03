@@ -156,26 +156,26 @@ const MenuSpeedDial = () => {
           zIndex: 1000,
         },
       }}
-      FabProps={{ style: { height: isSmallScreen ? 45 : 65, width: isSmallScreen ? 45 : 65 } }}
+      FabProps={{ style: { height: isSmallScreen ? 50 : 65, width: isSmallScreen ? 50 : 65 } }}
       icon={
         <SpeedDialIcon
           sx={{
-            height: isSmallScreen ? 25 : 45,
-            width: isSmallScreen ? 25 : 45,
+            height: isSmallScreen ? 30 : 45,
+            width: isSmallScreen ? 30 : 45,
           }}
           icon={
             <NavigationIcon
               sx={{
-                height: isSmallScreen ? 25 : 45,
-                width: isSmallScreen ? 25 : 45,
+                height: isSmallScreen ? 30 : 45,
+                width: isSmallScreen ? 30 : 45,
               }}
             />
           }
           openIcon={
             <NorthIcon
               sx={{
-                height: isSmallScreen ? 25 : 45,
-                width: isSmallScreen ? 25 : 45,
+                height: isSmallScreen ? 30 : 45,
+                width: isSmallScreen ? 30 : 45,
               }}
             />
           }

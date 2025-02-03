@@ -21,7 +21,6 @@ export interface Look extends CSSProperties {
   pr?: number | string
   paddingX?: number | string
   paddingY?: number | string
-
   gap?: number | string
   flex?: number | string
   height?: number | string

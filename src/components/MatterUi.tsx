@@ -5,7 +5,7 @@ import { Section } from '../library/matter-ui-section'
 import { Letter } from '../library/matter-ui-letter'
 import { Profile } from '../library/matter-ui-profile'
 import { GridItem } from '../library/matter-ui-griditem'
-import { Box, InputLabel, Slider, TextField, useTheme } from '@mui/material'
+import { Box, InputLabel, Slider, TextField, useMediaQuery, useTheme } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import { styled } from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
@@ -28,96 +28,94 @@ const MatterUi: React.FC<MatterUiProps> = () => {
   const [borderWidth2, setBorderWidth2] = useState<number>(2)
   const [padding2, setPadding2] = useState<number>(10)
   const theme = useTheme()
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
+  const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'))
   return (
     <>
       <GridContainer>
-        <GridItem area={6}>
+        <GridItem area={isSmallScreen ? 12 : 6}>
           <Section look={{ border: '2px solid', borderColor: theme.palette.text.primary }}>
-            <GridItem area={12} look={{ display: 'flex', flexDirection: 'column', gap: 1, width: '100%' }}>
-              <Letter look={{ fontSize: 24, fontWeight: 'bold' }}>Customize Grid Item</Letter>
+            <Letter look={{ fontSize: 24, fontWeight: 'bold' }}>Customize Grid Item</Letter>
 
-              {/* Font Size Slider */}
-              <Letter>Font Size: {fontSize}px</Letter>
-              <Slider min={10} max={40} value={fontSize} onChange={(e, value) => setFontSize(value as number)} />
+            {/* Font Size Slider */}
+            <Letter>Font Size: {fontSize}px</Letter>
+            <Slider min={10} max={40} value={fontSize} onChange={(e, value) => setFontSize(value as number)} />
 
-              {/* Border Color Picker */}
-              <Letter look={{ color: 'black' }}>Border Color</Letter>
-              <TextField
-                // label='Border Color'
-                type='text'
-                value={borderColor}
-                onChange={e => setBorderColor(e.target.value)}
-                fullWidth
-              />
-              {/* Border Width */}
-              <Letter>Border Width: {borderWidth}px</Letter>
-              <Slider min={1} max={10} value={borderWidth} onChange={(e, value) => setBorderWidth(value as number)} />
+            {/* Border Color Picker */}
+            <Letter look={{ color: 'black' }}>Border Color</Letter>
+            <TextField
+              // label='Border Color'
+              type='text'
+              value={borderColor}
+              onChange={e => setBorderColor(e.target.value)}
+              fullWidth
+            />
+            {/* Border Width */}
+            <Letter>Border Width: {borderWidth}px</Letter>
+            <Slider min={1} max={10} value={borderWidth} onChange={(e, value) => setBorderWidth(value as number)} />
 
-              {/* Padding Control */}
-              <Letter>Padding: {padding}px</Letter>
-              <Slider min={0} max={40} value={padding} onChange={(e, value) => setPadding(value as number)} />
+            {/* Padding Control */}
+            <Letter>Padding: {padding}px</Letter>
+            <Slider min={0} max={40} value={padding} onChange={(e, value) => setPadding(value as number)} />
 
-              {/* Grid Item Area */}
-              <Letter>Area: {itemArea}</Letter>
-              <Slider min={1} max={12} value={itemArea} onChange={(_, value) => setItemArea(value as number)} />
-            </GridItem>
+            {/* Grid Item Area */}
+            <Letter>Area: {itemArea}</Letter>
+            <Slider min={1} max={12} value={itemArea} onChange={(_, value) => setItemArea(value as number)} />
           </Section>
         </GridItem>
-        <GridItem area={6}>
+        <GridItem area={isSmallScreen ? 12 : 6}>
           <Section look={{ border: '2px solid', borderColor: theme.palette.text.primary }}>
-            <GridItem area={12} look={{ display: 'flex', flexDirection: 'column', gap: 1, width: '100%' }}>
-              <Letter look={{ fontSize: 24, fontWeight: 'bold' }}>Customize Grid Item 2</Letter>
+            <Letter look={{ fontSize: 24, fontWeight: 'bold' }}>Customize Grid Item 2</Letter>
 
-              {/* Font Size Slider */}
-              <Letter>Font Size: {fontSize2}px</Letter>
-              <Slider
-                min={10}
-                max={40}
-                value={fontSize2}
-                onChange={(e, value) => setFontSize2(value as number)}
-                sx={{ color: 'rgb(231, 132, 99)' }}
-              />
+            {/* Font Size Slider */}
+            <Letter>Font Size: {fontSize2}px</Letter>
+            <Slider
+              min={10}
+              max={40}
+              value={fontSize2}
+              onChange={(e, value) => setFontSize2(value as number)}
+              sx={{ color: 'rgb(231, 132, 99)' }}
+            />
 
-              {/* Border Color Picker */}
-              <Letter look={{ color: 'black' }}>Border Color</Letter>
-              <TextField
-                // label='Border Color'
-                type='text'
-                value={borderColor2}
-                onChange={e => setBorderColor2(e.target.value)}
-                fullWidth
-              />
+            {/* Border Color Picker */}
+            <Letter look={{ color: 'black' }}>Border Color</Letter>
+            <TextField
+              // label='Border Color'
+              type='text'
+              value={borderColor2}
+              onChange={e => setBorderColor2(e.target.value)}
+              fullWidth
+            />
 
-              {/* Border Width */}
-              <Letter>Border Width: {borderWidth}px</Letter>
-              <Slider
-                min={1}
-                max={10}
-                value={borderWidth2}
-                onChange={(e, value) => setBorderWidth2(value as number)}
-                sx={{ color: 'rgb(231, 132, 99)' }}
-              />
+            {/* Border Width */}
+            <Letter>Border Width: {borderWidth}px</Letter>
+            <Slider
+              min={1}
+              max={10}
+              value={borderWidth2}
+              onChange={(e, value) => setBorderWidth2(value as number)}
+              sx={{ color: 'rgb(231, 132, 99)' }}
+            />
 
-              {/* Padding Control */}
-              <Letter>Padding: {padding2}px</Letter>
-              <Slider
-                min={0}
-                max={40}
-                value={padding2}
-                onChange={(e, value) => setPadding2(value as number)}
-                sx={{ color: 'rgb(231, 132, 99)' }}
-              />
+            {/* Padding Control */}
+            <Letter>Padding: {padding2}px</Letter>
+            <Slider
+              min={0}
+              max={40}
+              value={padding2}
+              onChange={(e, value) => setPadding2(value as number)}
+              sx={{ color: 'rgb(231, 132, 99)' }}
+            />
 
-              {/* Grid Item Area */}
-              <Letter>Area: {itemArea2}</Letter>
-              <Slider
-                min={1}
-                max={12}
-                value={itemArea2}
-                onChange={(_, value) => setItemArea2(value as number)}
-                sx={{ color: 'rgb(231, 132, 99)' }}
-              />
-            </GridItem>
+            {/* Grid Item Area */}
+            <Letter>Area: {itemArea2}</Letter>
+            <Slider
+              min={1}
+              max={12}
+              value={itemArea2}
+              onChange={(_, value) => setItemArea2(value as number)}
+              sx={{ color: 'rgb(231, 132, 99)' }}
+            />
           </Section>
         </GridItem>
       </GridContainer>
