@@ -1,42 +1,42 @@
-import React from 'react'
-import { Outlet } from '@tanstack/react-router'
-import { Box } from '@mui/material'
+// React Router (v6+)
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import About from './components/About'
+import MatterUi from './components/MatterUi'
+import PersonalLife from './components/PersonalLife'
+import LeetCode from './leetcode/LeetCode'
 import MenuSpeedDial from './components/MenuSpeedDial'
-import { GridContainer } from './library/matter-ui-gridcontainer'
+import ErrorBoundary from './context/ErrorBoundary'
+import TestProblems from './leetcode/aiTestProblems/AiTestProblems'
 
-const App = () => {
+export default function App() {
   return (
-    <Box
-      sx={{
-        height: '100dvh', // Ensures the container covers the full viewport
-        display: 'flex',
-        overflow: 'hidden', // Prevents double scrollbars
-      }}
-    >
-      {/* Main Content with Scrollability */}
-      <Box
-        sx={{
-          flex: 1, // Takes up remaining space
-          width: '100%',
-          overflowY: 'auto', // Enables scrolling only for content
-        }}
-      >
-        <Outlet />
-      </Box>
-
-      {/* SpeedDial Fixed at Bottom Right */}
-      <Box
-        sx={{
-          position: 'fixed',
-          bottom: '16px',
-          right: '16px',
-          zIndex: 1000, // Ensures it's above other content
-        }}
-      >
-        <MenuSpeedDial />
-      </Box>
-    </Box>
+    <BrowserRouter>
+      <Routes>
+        {/* App is the layout route */}
+        {/* These are nested inside App's <Outlet /> */}
+        <Route index element={<About />} /> {/* index = default at "/" */}
+        <Route path='matterui' element={<MatterUi />} />
+        <Route path='personallife' element={<PersonalLife />} />
+        <Route
+          path='leetcode'
+          element={
+            <ErrorBoundary>
+              <LeetCode />
+            </ErrorBoundary>
+          }
+        />
+        <Route
+          path='testproblems'
+          element={
+            <ErrorBoundary>
+              <TestProblems />
+            </ErrorBoundary>
+          }
+        />
+        <Route path='*' element={<div>404 - Page Not Found</div>} />
+      </Routes>
+      <MenuSpeedDial />
+    </BrowserRouter>
   )
 }
-
-export default App

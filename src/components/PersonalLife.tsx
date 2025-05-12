@@ -2,6 +2,7 @@ import { GridContainer } from '../library/matter-ui-gridcontainer'
 import { Letter } from '../library/matter-ui-letter'
 import { GridItem } from '../library/matter-ui-griditem'
 import { useTheme } from '@mui/material'
+import LeetCode from '../leetcode/LeetCode'
 
 const PersonalLife = () => {
   const theme = useTheme()

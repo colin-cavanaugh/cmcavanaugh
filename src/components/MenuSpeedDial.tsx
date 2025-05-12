@@ -11,7 +11,7 @@ import {
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary'
 import AssignmentIcon from '@mui/icons-material/Assignment'
 import { Section } from '../library/matter-ui-section'
-import { useRouter } from '@tanstack/react-router'
+import { useNavigate } from 'react-router-dom'
 import NavigationIcon from '@mui/icons-material/Navigation'
 import NorthIcon from '@mui/icons-material/North'
 import { useThemeContext } from '../context/ThemeProvider'
@@ -23,6 +23,7 @@ import LightModeIcon from '@mui/icons-material/LightMode'
 import HomeIcon from '@mui/icons-material/Home'
 import { Letter } from '../library/matter-ui-letter'
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
+import LeetCodeIcon from '../img/leetcode.svg'
 
 const getActions = (theme: Theme, currentThemeMode: ThemeMode, isSmallScreen: boolean) => {
   const themeMap: Record<ThemeMode, { icon: JSX.Element; name: string }> = {
@@ -110,6 +111,21 @@ const getActions = (theme: Theme, currentThemeMode: ThemeMode, isSmallScreen: bo
     },
     {
       icon: (
+        <img
+          src={LeetCodeIcon}
+          style={{
+            height: isSmallScreen ? 25 : 35,
+            width: isSmallScreen ? 25 : 35,
+            color: theme.palette.background.icon,
+          }}
+        />
+      ),
+      name: 'Leet Code',
+      action: 'link',
+      link: '/leetcode',
+    },
+    {
+      icon: (
         <AssignmentIcon
           style={{
             height: isSmallScreen ? 25 : 35,
@@ -121,6 +137,7 @@ const getActions = (theme: Theme, currentThemeMode: ThemeMode, isSmallScreen: bo
       name: 'Resumé',
       action: 'download',
     },
+
     {
       icon: themeMap[currentThemeMode].icon,
       name: themeMap[currentThemeMode].name,
@@ -132,7 +149,7 @@ const getActions = (theme: Theme, currentThemeMode: ThemeMode, isSmallScreen: bo
 const MenuSpeedDial = () => {
   const theme = useTheme()
   const { mode, toggleTheme } = useThemeContext()
-  const router = useRouter()
+  const navigate = useNavigate()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
   const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'))
   const handleDownload = () => {
@@ -207,7 +224,7 @@ const MenuSpeedDial = () => {
           FabProps={{ style: { height: isSmallScreen ? 45 : 55, width: isSmallScreen ? 45 : 55 }, size: 'large' }}
           onClick={() => {
             if (action.action === 'link') {
-              router.navigate({ to: action.link })
+              navigate(`${action.link}`)
             } else if (action.action === 'download') {
               handleDownload()
             } else if (action.action === 'toggle') {

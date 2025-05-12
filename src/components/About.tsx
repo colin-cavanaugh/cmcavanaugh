@@ -1,16 +1,18 @@
 import React from 'react'
 import { useMediaQuery, useTheme } from '@mui/material'
-import { router } from '../routes/routes'
 import { Profile } from '../library/matter-ui-profile'
 import { Section } from '../library/matter-ui-section'
 import { Letter } from '../library/matter-ui-letter'
 import { GridContainer } from '../library/matter-ui-gridcontainer'
 import { GridItem } from '../library/matter-ui-griditem'
+import { useNavigate } from 'react-router-dom'
+import MenuSpeedDial from './MenuSpeedDial'
 
 const About = () => {
   const theme = useTheme()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
   const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'))
+  const navigate = useNavigate()
 
   return (
     <>
@@ -33,7 +35,7 @@ const About = () => {
                 cursor: 'pointer',
               }}
               src={'/coloradoPicCropped.png'}
-              onClick={() => router.navigate({ to: '/' })}
+              onClick={() => navigate('/')}
             />
           </GridItem>
         </>
