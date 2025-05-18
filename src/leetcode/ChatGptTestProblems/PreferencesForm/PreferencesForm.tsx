@@ -16,7 +16,7 @@
 // Try to use an object or array to manage checkbox states rather than individual useState calls per option. That’s a common real-world pattern.
 
 import React, { useState } from 'react'
-const Problem4 = () => {
+const PreferencesForm = () => {
   const [checked, setChecked] = useState<boolean>(false)
   const [checkedOptions, setCheckedOptions] = useState<string[] | []>([])
   const [username, setUsername] = useState('')
@@ -82,4 +82,4 @@ const Problem4 = () => {
   )
 }
 
-export default Problem4
+export default PreferencesForm

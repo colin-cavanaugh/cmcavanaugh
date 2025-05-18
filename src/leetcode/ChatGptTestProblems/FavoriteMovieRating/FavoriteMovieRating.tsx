@@ -19,7 +19,7 @@ import React, { FormEventHandler, useState } from 'react'
 const STAR = '\u2605'
 const EMPTY_STAR = '\u2606'
 
-const Problem5 = () => {
+const FavoriteMovieRating = () => {
   const [movie, setMovie] = useState<string>('')
   const [rating, setRating] = useState<string>('')
   const [submittedRating, setSubmittedRating] = useState<string>('')
@@ -72,4 +72,4 @@ const Problem5 = () => {
   )
 }
 
-export default Problem5
+export default FavoriteMovieRating

@@ -40,9 +40,10 @@ const ToDoManager = () => {
   }
 
   return (
-    <div className='container'>
+    <div className='grid-item'>
       <p className='header'>ToDo Manager</p>
       <form name='todoForm' onSubmit={addTask}>
+        <label htmlFor='taskName'>Task Name</label>
         <input name='taskName' className='task-name' type='text' onChange={e => setNewTask(e.target.value)} />
         <button name='addTask' className='add-task' type='submit'>
           Add Task

@@ -85,7 +85,8 @@ export const NewsletterSignup: FC = () => {
   }
 
   return (
-    <div className='container'>
+    <div className='grid-item'>
+      <p className='title'>Newsletter Signup</p>
       <form className='signupForm' onSubmit={signup}>
         <label htmlFor='name'>Your Name *</label>
         <input name='name' type='text' required defaultValue={storedNewsletter.name} />

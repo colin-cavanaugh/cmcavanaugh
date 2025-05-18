@@ -11,7 +11,7 @@ On click:
 - If the number is missing or out of range (1–10), show an error
 - The first emoji should be selected by default
 */
-const Problem3 = () => {
+const RepeatEmojis = () => {
   const defaultEmoji = '🐶'
   const [selectedEmoji, setSelectedEmoji] = useState<string>(defaultEmoji)
   const [emojiCount, setEmojiCount] = useState<number>(1)
@@ -49,4 +49,4 @@ const Problem3 = () => {
   )
 }
 
-export default Problem3
+export default RepeatEmojis

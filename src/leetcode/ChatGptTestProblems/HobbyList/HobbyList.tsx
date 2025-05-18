@@ -13,7 +13,7 @@ Bonus:
 Prevent adding empty strings or duplicate hobbies.
 */
 import React, { useState } from 'react'
-const Problem6 = () => {
+const HobbyList = () => {
   const [hobbyList, setHobbyList] = useState<string[] | []>([])
   const [newHobby, setNewHobby] = useState<string>('')
 
@@ -23,8 +23,10 @@ const Problem6 = () => {
   }
 
   return (
-    <div className='container'>
+    <div className='grid-item'>
+      <p className='title'>Hobby List</p>
       <form name='hobby-form' onSubmit={addHobby}>
+        <label htmlFor='newHobby'>New Hobby</label>
         <input name='newHobby' onChange={e => setNewHobby(e.target.value)} />
         <button type='submit'>Add Hobby</button>
       </form>
@@ -36,4 +38,4 @@ const Problem6 = () => {
   )
 }
 
-export default Problem6
+export default HobbyList

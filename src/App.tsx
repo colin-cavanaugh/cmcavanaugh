@@ -7,7 +7,7 @@ import PersonalLife from './components/PersonalLife'
 import LeetCode from './leetcode/LeetCode'
 import MenuSpeedDial from './components/MenuSpeedDial'
 import ErrorBoundary from './context/ErrorBoundary'
-import TestProblems from './leetcode/aiTestProblems/AiTestProblems'
+import ChatGptTestProblems from './leetcode/ChatGptTestProblems/ChatGptTestProblems'
 
 export default function App() {
   return (
@@ -18,19 +18,19 @@ export default function App() {
         <Route index element={<About />} /> {/* index = default at "/" */}
         <Route path='matterui' element={<MatterUi />} />
         <Route path='personallife' element={<PersonalLife />} />
-        <Route
+        {/* <Route
           path='leetcode'
           element={
             <ErrorBoundary>
               <LeetCode />
             </ErrorBoundary>
           }
-        />
+        /> */}
         <Route
-          path='testproblems'
+          path='leetcode'
           element={
             <ErrorBoundary>
-              <TestProblems />
+              <ChatGptTestProblems />
             </ErrorBoundary>
           }
         />

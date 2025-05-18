@@ -13,7 +13,7 @@ When the form is submitted:
 - Show the message: “You love [animal]! Fun fact: [fact]” below the form
 - If either the dropdown or textarea is empty, show a validation message
 */
-const Problem1 = () => {
+const AnimalFunFacts = () => {
   const [selectedAnimal, setSelectedAnimal] = useState<string>('')
   const [funFact, setFunFact] = useState<string>('')
   const [submittedFact, setSubmittedFact] = useState<string>('')
@@ -48,4 +48,4 @@ const Problem1 = () => {
   )
 }
 
-export default Problem1
+export default AnimalFunFacts
