@@ -24,13 +24,13 @@ const ComponentCustomizer: React.FC<ComponentCustomizerProps> = ({ itemArea, set
         {/* Font Size Slider */}
         <Box>
           <Letter>Font Size: {fontSize}px</Letter>
-          <Slider min={10} max={40} value={fontSize} onChange={(e, value) => setFontSize(value as number)} />
+          <Slider min={10} max={40} value={fontSize} onChange={(_, value) => setFontSize(value as number)} />
         </Box>
 
         {/* Border Color Picker */}
         <TextField
-          label='Border Color'
-          type='text'
+          label="Border Color"
+          type="text"
           value={borderColor}
           onChange={e => setBorderColor(e.target.value)}
           fullWidth
@@ -39,13 +39,13 @@ const ComponentCustomizer: React.FC<ComponentCustomizerProps> = ({ itemArea, set
         {/* Border Width */}
         <Box>
           <Letter>Border Width: {borderWidth}px</Letter>
-          <Slider min={1} max={10} value={borderWidth} onChange={(e, value) => setBorderWidth(value as number)} />
+          <Slider min={1} max={10} value={borderWidth} onChange={(_, value) => setBorderWidth(value as number)} />
         </Box>
 
         {/* Padding Control */}
         <Box>
           <Letter>Padding: {padding}px</Letter>
-          <Slider min={0} max={40} value={padding} onChange={(e, value) => setPadding(value as number)} />
+          <Slider min={0} max={40} value={padding} onChange={(_, value) => setPadding(value as number)} />
         </Box>
 
         {/* Grid Item Area */}

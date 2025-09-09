@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "rimraf dist && tsc -p tsconfig.app.json --noEmit && vite build",
+    "build:types": "tsc -p tsconfig.types.json",
     "lint": "eslint .",
     "preview": "vite preview"
   },

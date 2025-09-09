@@ -1,26 +1,22 @@
-import { useRouterState } from '@tanstack/react-router'
+import { useNavigate, useRouterState } from '@tanstack/react-router'
 import { GridItem } from '../library/matter-ui-griditem'
 import { Letter } from '../library/matter-ui-letter'
 import { Profile } from '../library/matter-ui-profile'
-import { router } from '../routes/routes'
+// import { router } from '../routes/routes'
 import { Section } from '../library/matter-ui-section'
 import { Divider, useTheme, useMediaQuery } from '@mui/material'
 
 const Header = () => {
   const theme = useTheme()
   const { location } = useRouterState()
+  const navigate = useNavigate()
   const pathName = location.pathname
 
   // ✅ Responsive adjustments
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md')) // `md` and below (tablet & mobile)
 
   // ✅ Update title based on the current route
-  const headerTitle =
-    pathName === '/'
-      ? 'About'
-      : pathName === '/matterui'
-      ? 'Matter UI'
-      : 'Not Found'
+  const headerTitle = pathName === '/' ? 'About' : pathName === '/matterui' ? 'Matter UI' : 'Not Found'
 
   return (
     <Section
@@ -51,18 +47,10 @@ const Header = () => {
             cursor: 'pointer',
           }}
           src={'/groheadshot.jpg'}
-          onClick={() => router.navigate({ to: '/' })}
+          onClick={() => navigate({ to: '/' })}
         />
-        <Letter
-          look={{ fontSize: isSmallScreen ? 24 : 50, textAlign: 'center' }}
-        >
-          {headerTitle}
-        </Letter>
-        <Letter
-          look={{ fontSize: isSmallScreen ? 18 : 28, textAlign: 'center' }}
-        >
-          Colin Cavanaugh
-        </Letter>
+        <Letter look={{ fontSize: isSmallScreen ? 24 : 50, textAlign: 'center' }}>{headerTitle}</Letter>
+        <Letter look={{ fontSize: isSmallScreen ? 18 : 28, textAlign: 'center' }}>Colin Cavanaugh</Letter>
       </GridItem>
       <Divider
         sx={{

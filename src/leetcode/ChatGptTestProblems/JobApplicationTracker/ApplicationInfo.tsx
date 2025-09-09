@@ -7,6 +7,12 @@ interface ApplicationInfoProps {
 }
 
 const ApplicationInfo: FC<ApplicationInfoProps> = ({ selectedApplication, handleClose }) => {
+  const [companyName, setCompanyName] = React.useState<string>(selectedApplication?.companyName ?? '')
+  const [jobTitle, setJobTitle] = React.useState<string>(selectedApplication?.jobTitle ?? '')
+  const [status, setStatus] = React.useState<string>(selectedApplication?.status ?? '')
+  const [date, setDate] = React.useState(selectedApplication?.date)
+  const [notes, setNotes] = React.useState(selectedApplication?.notes)
+
   return (
     <div className='modal'>
       {[selectedApplication]?.length > 0
@@ -15,23 +21,53 @@ const ApplicationInfo: FC<ApplicationInfoProps> = ({ selectedApplication, handle
               <div className='modal-content' key={app?.id}>
                 <div className='row-div'>
                   <label htmlFor='companyName'>Company Name</label>
-                  <p>{app?.companyName}</p>
+                  <input
+                    name='editCompanyName'
+                    className='edit-input'
+                    type='text'
+                    value={companyName}
+                    onChange={e => setCompanyName(e.target.value)}
+                  />
                 </div>
                 <div className='row-div'>
                   <label htmlFor='jobTitle'>Job Title</label>
-                  <p>{app?.jobTitle}</p>
+                  <input
+                    name='editJobTitle'
+                    className='edit-input'
+                    type='text'
+                    value={jobTitle}
+                    onChange={e => setJobTitle(e.target.value)}
+                  />
                 </div>
                 <div className='row-div'>
                   <label htmlFor='status'>Status</label>
-                  <p>{app?.status}</p>
+                  <select className='edit-select' value={status} onChange={e => setStatus(e.target.value)}>
+                    <option value={''}></option>
+                    <option value={'Applied'}>Applied</option>
+                    <option value={'Interviewing'}>Interviewing</option>
+                    <option value={'Offer'}>Offer</option>
+                    <option value={'Rejected'}>Rejected</option>
+                  </select>
                 </div>
                 <div className='row-div'>
                   <label htmlFor='date'>Date</label>
-                  <p>{app?.date}</p>
+                  <input
+                    name='date'
+                    className='edit-input'
+                    type='date'
+                    value={date}
+                    onChange={e => setDate(e.target.value)}
+                  />
                 </div>
                 <div className='row-div'>
                   <label htmlFor='notes'>Notes</label>
-                  <p>{app?.notes}</p>
+                  <input
+                    name='notes'
+                    className='edit-input'
+                    type='text'
+                    value={notes}
+                    onChange={e => setNotes(e.target.value)}
+                  />
                 </div>
               </div>
             )

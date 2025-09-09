@@ -1,0 +1,53 @@
+.modal {
+  /* display: none; Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  /* left: 0; */
+  right: 350px;
+  top: 150px;
+  width: 50%; /* Full width */
+  height: 50%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.3); /* Black w/ opacity */
+  backdrop-filter: blur(5px);
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  z-index: 2;
+}
+.close {
+  background-color: rgba(0, 0, 0, 1);
+  color: rgba(255, 255, 255, 1);
+  font-weight: bold;
+  width: 30%;
+  height: auto;
+}
+.close:hover {
+  background-color: rgb(225, 133, 133);
+}
+.grid-application-item {
+  grid-column: span 6;
+  padding: 20px;
+  border: 1px dashed rgb(0, 0, 0);
+}
+.card-text {
+  font-size: 15px;
+  text-align: left;
+  width: 100%;
+}
+.search-apps {
+  height: 30px;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+.search-apps:focus {
+  background-color: rgba(138, 193, 241, 0.385);
+  font-size: 16px;
+}

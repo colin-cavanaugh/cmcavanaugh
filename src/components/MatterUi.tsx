@@ -3,7 +3,7 @@ import { GridContainer } from '../library/matter-ui-gridcontainer'
 import { GridItem } from '../library/matter-ui-griditem'
 import { Section } from '../library/matter-ui-section'
 import { Letter } from '../library/matter-ui-letter'
-import { Box, Slider, TextField, useMediaQuery, useTheme } from '@mui/material'
+import { Slider, TextField, useMediaQuery, useTheme } from '@mui/material'
 
 interface GridItemConfig {
   fontSize: number
@@ -74,7 +74,7 @@ const MatterUi: React.FC = () => {
                 {/* Border Color Picker */}
                 <Letter look={{ color: 'black' }}>Border Color</Letter>
                 <TextField
-                  type='text'
+                  type="text"
                   value={gridConfigs[activeItemId]?.borderColor || ''}
                   onChange={e => handleConfigChange('borderColor', e.target.value)}
                   fullWidth

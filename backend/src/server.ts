@@ -34,7 +34,6 @@ app.get('/api/item/:id', async (req, res) => {
   }
 })
 
-
 import { PutCommand } from '@aws-sdk/lib-dynamodb'
 
 app.post('/api/item', async (req, res) => {
@@ -51,9 +50,6 @@ app.post('/api/item', async (req, res) => {
     res.status(500).json({ error: 'Failed to write item' })
   }
 })
-
-
-
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`)

@@ -25,7 +25,7 @@ const ChatGptTestProblems = () => {
       {/* <AdvancedFormSummary /> */}
       <Applications applications={applications} deleteApplication={deleteApplication} />
 
-      <DynamicSkillSelector />
+      {/* <DynamicSkillSelector /> */}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { Box, Chip, Typography, useTheme } from '@mui/material'
+import { Typography } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import { styled } from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
@@ -15,13 +15,7 @@ const MaterialUi = () => {
     }),
   }))
   return (
-    <Grid
-      container
-      spacing={1}
-      width={'100%'}
-      sx={{ height: 'calc(100vh - 205px)' }}
-      py={1}
-    >
+    <Grid container spacing={1} width={'100%'} sx={{ height: 'calc(100vh - 205px)' }} py={1}>
       {/* Material UI */}
       <Grid
         size={12}

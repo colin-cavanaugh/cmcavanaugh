@@ -1,16 +1,6 @@
-import {
-  Box,
-  IconButton,
-  SpeedDial,
-  SpeedDialAction,
-  SpeedDialIcon,
-  Tooltip,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material'
+import { SpeedDial, SpeedDialAction, SpeedDialIcon, useMediaQuery, useTheme } from '@mui/material'
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary'
 import AssignmentIcon from '@mui/icons-material/Assignment'
-import { Section } from '../library/matter-ui-section'
 import { useNavigate } from 'react-router-dom'
 import NavigationIcon from '@mui/icons-material/Navigation'
 import NorthIcon from '@mui/icons-material/North'
@@ -23,14 +13,15 @@ import LightModeIcon from '@mui/icons-material/LightMode'
 import HomeIcon from '@mui/icons-material/Home'
 import { Letter } from '../library/matter-ui-letter'
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
-import LeetCodeIcon from '../img/leetcode.svg'
+// import LeetCodeIcon from '../img/leetcode.svg'
 
+const LeetCodeIcon = '/leetcode.svg'
 const getActions = (theme: Theme, currentThemeMode: ThemeMode, isSmallScreen: boolean) => {
   const themeMap: Record<ThemeMode, { icon: JSX.Element; name: string }> = {
     light: {
       icon: (
         <DarkModeIcon
-          color='primary'
+          color="primary"
           style={{
             height: isSmallScreen ? 25 : 35,
             width: isSmallScreen ? 25 : 35,
@@ -151,14 +142,13 @@ const MenuSpeedDial = () => {
   const { mode, toggleTheme } = useThemeContext()
   const navigate = useNavigate()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
-  const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'))
   const handleDownload = () => {
     window.open('/resume.pdf', '_blank')
   }
 
   return (
     <SpeedDial
-      ariaLabel='Navigation'
+      ariaLabel="Navigation"
       sx={{
         position: 'absolute',
         bottom: 16, // Keeps it at the bottom

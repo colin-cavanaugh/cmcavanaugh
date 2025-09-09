@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useApplicationsFromStorage } from './useApplicationsFromStorage'
 import { Application } from './types'
+import './JobApplicationTracker.css'
 /*
 🧠 Advanced Challenge: Job Application Tracker
 Build a Job Application Tracker dashboard where users can:
@@ -83,7 +83,7 @@ const JobApplicationTracker = ({
   return (
     <div className='grid-item'>
       <p className='header'>Enter Job Information</p>
-      <form name='job-app-form' onSubmit={submitApplication}>
+      <form name='job-app-form' className='job-app-form' onSubmit={submitApplication}>
         <label htmlFor='companyName'>Company Name</label>
         <input name='companyName' type='text' value={companyName} onChange={e => setCompanyName(e.target.value)} />
         <label htmlFor='jobTitle'>Job Title</label>

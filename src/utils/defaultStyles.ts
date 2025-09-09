@@ -50,6 +50,10 @@ export const defaultStyles = {
     fontFamily: 'Muli, sans-serif',
     padding: 0,
     margin: 0,
+    whiteSpace: 'normal', // allow wrapping
+    overflowWrap: 'anywhere', // break long tokens anywhere if needed
+    wordBreak: 'break-word', // legacy-friendly wrap for long words
+    hyphens: 'auto', // nicer hyphenation when available
   }),
   GridItem: (area = 12) =>
     css({
@@ -64,6 +68,7 @@ export const defaultStyles = {
       boxSizing: 'border-box',
       padding: '10px',
       borderRadius: '8px',
+      minWidth: 0,
     }),
   Profile: css({
     display: 'inline-block',
