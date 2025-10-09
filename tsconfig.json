@@ -15,6 +15,7 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": [
+    "src",
     "src/components/**/*",
     "src/types/**/*.d.ts" // <-- include the asset declarations
   ],

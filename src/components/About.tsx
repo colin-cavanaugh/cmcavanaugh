@@ -4,7 +4,6 @@ import { Letter } from '../library/matter-ui-letter'
 import { GridContainer } from '../library/matter-ui-gridcontainer'
 import { GridItem } from '../library/matter-ui-griditem'
 import { useNavigate } from 'react-router-dom'
-import { Section } from '../library/matter-ui-section'
 
 const About = () => {
   const theme = useTheme()

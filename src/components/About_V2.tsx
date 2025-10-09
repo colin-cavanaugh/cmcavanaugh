@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import {
-  Divider,
   List,
   ListItem,
   ListItemIcon,
@@ -18,7 +17,9 @@ import { Profile } from '../library/matter-ui-profile'
 import { Letter } from '../library/matter-ui-letter'
 import { Section } from '../library/matter-ui-section'
 import { useNavigate } from 'react-router-dom'
+//@ts-ignore
 import GroIcon from '../img/gromarketing-white.png'
+//@ts-ignore
 import LightspeedExpeditingLogo from '../img/lightspeedexpediting-logo.png'
 
 const experience = [
@@ -100,7 +101,7 @@ const CollapsibleSection: React.FC<{
               <ListItemIcon sx={{ minWidth: 28, mt: 0.5 }}>
                 <RadioButtonUncheckedIcon fontSize="inherit" />
               </ListItemIcon>
-              <ListItemText primaryTypographyProps={{ variant: 'body1' }}>{text}</ListItemText>
+              <ListItemText sx={{ fontSize: 'clamp(16px, 2.6vw, 22px)' }}>{text}</ListItemText>
             </ListItem>
           ))}
         </List>
@@ -160,7 +161,7 @@ const About_V2 = () => {
           <GridItem area={12}>
             <Letter
               look={{
-                fontSize: isSmall ? 14 : 18,
+                fontSize: 'clamp(14px, 1.8vw, 18px)',
                 lineHeight: 1.75,
                 marginTop: 8,
                 fontWeight: 'bold',
