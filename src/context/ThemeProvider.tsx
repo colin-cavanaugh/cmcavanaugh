@@ -22,7 +22,7 @@ const themes: Record<ThemeMode, Theme> = {
 export const ThemeContext = createContext<ThemeContextProps | undefined>(undefined)
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [mode, setMode] = useState<ThemeMode>('custom')
+  const [mode, setMode] = useState<ThemeMode>('dark')
 
   // ✅ New: Allow explicitly setting a theme
   const setTheme = (newMode: ThemeMode) => {

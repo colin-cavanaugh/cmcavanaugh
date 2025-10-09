@@ -4,6 +4,7 @@ import './index.css'
 import App from './App'
 import Login from './auth/Login'
 import { ThemeProvider } from './context/ThemeProvider'
+import { Section } from './library/matter-ui-section'
 
 const Authentication = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)

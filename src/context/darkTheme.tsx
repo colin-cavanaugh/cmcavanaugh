@@ -33,7 +33,7 @@ export const darkTheme = createTheme({
     primary: { main: 'rgba(255,255,255,1)', contrastText: 'rgba(0,0,0,1)' },
     secondary: { main: 'rgba(255,255,255,1)', contrastText: 'rgba(0,0,0,1)' },
     background: {
-      default: 'rgba(0,0,0,1)',
+      default: 'rgba(36, 48, 73, 1)',
       paper: 'rgba(0,0,0,1)',
       custom: 'rgb(234, 112, 71)', // ✅ No TypeScript error
       blur: 'rgba(0, 0, 0, 0.7)',
