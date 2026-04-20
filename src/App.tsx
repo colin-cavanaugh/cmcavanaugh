@@ -1,33 +1,22 @@
-// React Router (v6+)
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import About from './components/About'
 import About_V2 from './components/About_V2'
 import MatterUi from './components/MatterUi'
 import PersonalLife from './components/PersonalLife'
-import LeetCode from './leetcode/LeetCode'
-import MenuSpeedDial from './components/MenuSpeedDial'
+import CaseStudy from './components/CaseStudy'
+import NavBar from './components/NavBar'
 import ErrorBoundary from './context/ErrorBoundary'
 import ChatGptTestProblems from './leetcode/ChatGptTestProblems/ChatGptTestProblems'
 
 export default function App() {
   return (
     <BrowserRouter>
+      <NavBar />
       <Routes>
-        {/* App is the layout route */}
-        {/* These are nested inside App's <Outlet /> */}
         <Route index element={<About_V2 />} />
-        {/* <Route index element={<About />} /> */}
+        <Route path="casestudy" element={<CaseStudy />} />
         <Route path="matterui" element={<MatterUi />} />
         <Route path="personallife" element={<PersonalLife />} />
-        {/* <Route
-          path='leetcode'
-          element={
-            <ErrorBoundary>
-              <LeetCode />
-            </ErrorBoundary>
-          }
-        /> */}
+        <Route path="kiddo" element={<div>Kiddo</div>} />
         <Route
           path="leetcode"
           element={
@@ -38,7 +27,6 @@ export default function App() {
         />
         <Route path="*" element={<div>404 - Page Not Found</div>} />
       </Routes>
-      <MenuSpeedDial />
     </BrowserRouter>
   )
 }

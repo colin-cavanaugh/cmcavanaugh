@@ -8,24 +8,34 @@ import ExpenseTracker from './ExpenseTracker/ExpenseTracker'
 import JobApplicationTracker from './JobApplicationTracker/JobApplicationTracker'
 import Applications from './JobApplicationTracker/Applications'
 import { useApplicationsFromStorage } from './JobApplicationTracker/useApplicationsFromStorage'
+import { NAVBAR_HEIGHT_PX } from '../../components/NavBar'
 
 const ChatGptTestProblems = () => {
   const { applications, storeApplication, deleteApplication } = useApplicationsFromStorage()
 
   return (
-    <div className='grid-container'>
-      <div className='grid-header'>
-        <p className='test-paragraph'>Test Problems</p>
-      </div>
-      <ExpenseTracker />
-      <JobApplicationTracker storeApplication={storeApplication} />
-      <NewsletterSignup />
-      <HobbyList />
-      <ToDoManager />
-      {/* <AdvancedFormSummary /> */}
-      <Applications applications={applications} deleteApplication={deleteApplication} />
+    <div
+      style={{
+        marginTop: NAVBAR_HEIGHT_PX,
+        height: `calc(100dvh - ${NAVBAR_HEIGHT_PX}px)`,
+        overflowY: 'auto',
+        overflowX: 'hidden',
+      }}
+    >
+      <div className='grid-container'>
+        <div className='grid-header'>
+          <p className='test-paragraph'>Test Problems</p>
+        </div>
+        <ExpenseTracker />
+        <JobApplicationTracker storeApplication={storeApplication} />
+        <NewsletterSignup />
+        <HobbyList />
+        <ToDoManager />
+        {/* <AdvancedFormSummary /> */}
+        <Applications applications={applications} deleteApplication={deleteApplication} />
 
-      {/* <DynamicSkillSelector /> */}
+        {/* <DynamicSkillSelector /> */}
+      </div>
     </div>
   )
 }

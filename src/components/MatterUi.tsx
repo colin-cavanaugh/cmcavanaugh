@@ -3,7 +3,8 @@ import { GridContainer } from '../library/matter-ui-gridcontainer'
 import { GridItem } from '../library/matter-ui-griditem'
 import { Section } from '../library/matter-ui-section'
 import { Letter } from '../library/matter-ui-letter'
-import { Slider, TextField, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Slider, TextField, useMediaQuery, useTheme } from '@mui/material'
+import { NAVBAR_HEIGHT_PX } from './NavBar'
 
 interface GridItemConfig {
   fontSize: number
@@ -54,7 +55,14 @@ const MatterUi: React.FC = () => {
   }
 
   return (
-    <>
+    <Box
+      sx={{
+        mt: `${NAVBAR_HEIGHT_PX}px`,
+        height: `calc(100dvh - ${NAVBAR_HEIGHT_PX}px)`,
+        overflowY: 'auto',
+        overflowX: 'hidden',
+      }}
+    >
       <GridContainer>
         <GridItem area={isSmallScreen ? 12 : 6}>
           <Section look={{ border: '2px solid', borderColor: theme.palette.text.primary }}>
@@ -140,7 +148,7 @@ const MatterUi: React.FC = () => {
           </GridItem>
         ))}
       </GridContainer>
-    </>
+    </Box>
   )
 }
 

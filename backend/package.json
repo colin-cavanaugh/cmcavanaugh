@@ -5,8 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node --loader ts-node/esm src/server.ts",
-    "build": "tsc",
+    "dev": "tsx watch src/server.ts",
+    "start": "node dist/server.mjs",
+    "build": "tsup src/server.ts --format esm --sourcemap --target node18 --minify --clean --out-dir dist --out-extension:.js=.mjs",
     "serve": "node dist/server.js"
   },
   "keywords": [],
@@ -23,8 +24,10 @@
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
-    "@types/node": "^22.14.1",
+    "@types/node": "^22.18.10",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
   }
 }

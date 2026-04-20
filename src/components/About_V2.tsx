@@ -1,47 +1,66 @@
-import React, { useState } from 'react'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked'
 import {
+  Box,
+  Button,
+  Chip,
+  Divider,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Typography,
-  Button,
   useMediaQuery,
   useTheme,
-  Box,
 } from '@mui/material'
-import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked'
-import { GridContainer } from '../library/matter-ui-gridcontainer'
-import { GridItem } from '../library/matter-ui-griditem'
-import { Profile } from '../library/matter-ui-profile'
-import { Letter } from '../library/matter-ui-letter'
-import { Section } from '../library/matter-ui-section'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-//@ts-ignore
-import GroIcon from '../img/gromarketing-white.png'
+import { Letter } from '../library/matter-ui-letter'
+import { Profile } from '../library/matter-ui-profile'
+import { NAVBAR_HEIGHT_PX } from './NavBar'
+
 //@ts-ignore
 import LightspeedExpeditingLogo from '../img/lightspeedexpediting-logo.png'
 
-const experience = [
-  'Sole engineer and system architect of a large-scale, real-time CRM and workflow platform, delivering end-to-end development across architecture, backend services, frontend engineering, UI/UX, and integrations.',
-  'Designed and deployed a scalable backend architecture on AWS, integrating RESTful APIs with both MySQL and DynamoDB to support diverse data models, high throughput, and availability.',
-  'Architected a shared caching layer for the platform’s largest dataset, enabling real-time data freshness and consistency across sessions while significantly reducing backend load.',
-  'Built real-time WebSocket infrastructure to synchronize live contract and campaign data across distributed users with low latency.',
-  'Led a comprehensive TypeScript migration and frontend refactor, enhancing type safety, maintainability, and development velocity across the application.',
-  'Optimized React Query caching strategies and invalidation flows to deliver a more responsive and reliable user experience.',
-  'Automated critical business workflows, including onboarding, deal management, contract merging, and client communications, reducing manual intervention and increasing operational efficiency.',
-  'Implemented structured Git branching and semantic versioning (standard-version), improving release quality and traceability.',
-  'Coordinated phased testing and delivered the platform to production within 10 months, establishing a foundation for future engineering team expansion.',
-  'Maintained a strong emphasis on system scalability, performance optimization, and long-term maintainability across all components.',
-]
-const lightspeedExperience = [
-  'Founded and operated a freight expediting company for over a decade, overseeing business strategy, operations, and client relationships.',
-  'Developed custom pricing and quoting systems using Python, JavaScript, and Excel integrations, improving financial visibility and profitability.',
-  'Automated data processing to maintain accurate business records and support year-over-year growth.',
-  'Built enduring client relationships through transparent communication and operational reliability.',
+const outerboxExperience = [
+  'Sole architect of a production platform supporting CRM, deal management, and contract automation for a 300+ person organization.',
+  'Built the entire stack end-to-end: React/TypeScript frontend, Node.js/Express APIs, DynamoDB data layer (18,000+ records), and real-time WebSocket sync for 40+ concurrent users.',
+  'Designed reusable service abstractions enabling rapid third-party integration (Slack, PandaDoc, Google APIs) and long-term extensibility across the platform.',
+  'Automated deal workflows from initiation to signed contract in under 90 seconds; integrated PandaDoc, Slack, and Google APIs into a single orchestrated pipeline.',
+  'Built an AI-powered conversational agent and strategy recommendation engine using tool calling and prompt caching, reducing API costs by 90%.',
+  "Integrated with ClickUp's enterprise API to automate task deployment, workspace auditing, and service delivery tracking across 1,200+ client folders.",
+  'Architected semantic deal versioning, role-based notification routing, in-memory search indexing (sub-100ms), and centralized configuration management as reusable platform primitives.',
+  'Led cross-org data migration: 27,000+ user ID remappings across 14,000+ records, OAuth migration, and identity matching across workspaces at acquisition.',
 ]
 
-/** Collapsible wrapper for any tall content */
+const lightspeedExperience = [
+  'Founded and operated a freight expediting business for 13 years; built custom quoting, pricing, and dispatch automation tooling in Python and JavaScript.',
+  'Self-directed engineering in a production business context — instilled the fast-iteration, high-accountability mindset that defines my engineering approach today.',
+]
+
+const skillGroups = [
+  {
+    label: 'Languages & Frameworks',
+    skills: ['TypeScript', 'JavaScript', 'React', 'Node', 'Python', 'Next.js'],
+  },
+  {
+    label: 'AI & Agents',
+    skills: ['Anthropic Claude', 'Claude Code', 'OpenAI', 'Tool Calling', 'Prompt Engineering', 'Agent Architecture'],
+  },
+  {
+    label: 'Infrastructure',
+    skills: ['AWS (EC2, S3)', 'DynamoDB', 'WebSockets', 'REST APIs', 'Event-Driven Arch', 'PM2'],
+  },
+  {
+    label: 'Architecture',
+    skills: ['System Design', 'Distributed Systems', 'API Design', 'Real-Time Data Systems', 'Caching Strategies'],
+  },
+  {
+    label: 'Integrations',
+    skills: ['Slack', 'ClickUp', 'PandaDoc', 'Google', 'MUI', 'React Query', 'Git'],
+  },
+]
+
 const CollapsibleSection: React.FC<{
   logoSrc: string
   heading: string
@@ -50,37 +69,26 @@ const CollapsibleSection: React.FC<{
   collapsedMaxHeight?: number
 }> = ({ logoSrc, heading, subheading, items, collapsedMaxHeight = 260 }) => {
   const [expanded, setExpanded] = useState(false)
+  const theme = useTheme()
 
   return (
-    // <Box
-    //   sx={{
-    //     display: 'flex',
-    //     flexDirection: 'column',
-    //     alignItems: 'flex-start',
-    //     textAlign: 'left',
-    //     gap: 1,
-    //     // responsive column card
-    //     flex: '1 1 520px', // grows, basis ~520px
-    //     minWidth: 320, // don’t shrink too small
-    //     maxWidth: '100%',
-    //   }}
-    // >
     <>
-      <Profile src={logoSrc} look={{ width: 55, height: 55 }} />
-      <Letter look={{ fontSize: 16, fontWeight: 'bold' }}>{heading}</Letter>
-      <Letter look={{ fontSize: 13 }}>{subheading}</Letter>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 0.5 }}>
+        <Profile src={logoSrc} look={{ width: 40, height: 40, borderRadius: '8px', objectFit: 'contain' }} />
+        <Box>
+          <Letter look={{ fontSize: 15, fontWeight: 700, lineHeight: 1.3 }}>{heading}</Letter>
+          <Letter look={{ fontSize: 12, color: theme.palette.text.secondary, lineHeight: 1.3 }}>{subheading}</Letter>
+        </Box>
+      </Box>
 
       <Box
         sx={{
           position: 'relative',
           width: '100%',
-          // clamp height when collapsed
           maxHeight: expanded ? 'none' : collapsedMaxHeight,
           overflow: 'hidden',
-          pr: 1,
         }}
       >
-        {/* gradient fade when collapsed */}
         {!expanded && (
           <Box
             sx={{
@@ -88,337 +96,273 @@ const CollapsibleSection: React.FC<{
               left: 0,
               right: 0,
               bottom: 0,
-              height: 56,
-              background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.08) 40%, rgba(0,0,0,0.18) 100%)',
+              height: 48,
+              background: `linear-gradient(to bottom, transparent, ${theme.palette.background.default})`,
               pointerEvents: 'none',
             }}
           />
         )}
-
-        <List dense sx={{ pl: 0 }}>
+        <List dense sx={{ pl: 0, py: 0 }}>
           {items.map((text, i) => (
-            <ListItem key={i} sx={{ alignItems: 'flex-start' }}>
-              <ListItemIcon sx={{ minWidth: 28, mt: 0.5 }}>
-                <RadioButtonUncheckedIcon fontSize="inherit" />
+            <ListItem key={i} sx={{ alignItems: 'flex-start', px: 0, py: 0.25 }}>
+              <ListItemIcon sx={{ minWidth: 22, mt: 0.6 }}>
+                <RadioButtonUncheckedIcon sx={{ fontSize: 8, color: theme.palette.primary.main }} />
               </ListItemIcon>
-              <ListItemText sx={{ fontSize: 'clamp(16px, 2.6vw, 22px)' }}>{text}</ListItemText>
+              <ListItemText slotProps={{ primary: { sx: { fontSize: 'clamp(13px, 1.5vw, 15px)', lineHeight: 1.55 } } }}>
+                {text}
+              </ListItemText>
             </ListItem>
           ))}
         </List>
       </Box>
 
-      <Button size="small" onClick={() => setExpanded(v => !v)} sx={{ alignSelf: 'flex-start' }}>
+      <Button
+        size="small"
+        onClick={() => setExpanded(v => !v)}
+        sx={{ alignSelf: 'flex-start', mt: 0.5, fontWeight: 600, fontSize: 12 }}
+      >
         {expanded ? 'Show less' : 'Read more'}
       </Button>
     </>
   )
 }
 
+const SummaryText = () => {
+  const theme = useTheme()
+  return (
+    <Box sx={{ width: '100%', minWidth: 0 }}>
+      <Typography
+        variant="body2"
+        sx={{
+          color: theme.palette.text.primary,
+          lineHeight: 1.75,
+          fontSize: 'clamp(13px, 1.5vw, 14px)',
+          whiteSpace: 'normal',
+          wordBreak: 'break-word',
+          overflowWrap: 'break-word',
+          display: 'block',
+        }}
+      >
+        Senior full-stack engineer who architects and ships production platforms end-to-end. Sole architect of a
+        real-time operational platform serving a 300+ person organization — cited as a top-4 strategic factor in company
+        acquisition. Specializes in scalable AWS infrastructure, AI-powered tooling, and high-velocity React/TypeScript
+        applications. Built for high-intensity, high-stakes environments with an emphasis on clean abstractions and
+        long-term maintainability.
+      </Typography>
+    </Box>
+  )
+}
+
 const About_V2 = () => {
   const theme = useTheme()
   const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
+  const OuterBoxLogo = theme.palette.mode === 'dark' ? '/outerbox-logo-white.svg' : '/outerbox-logo-navy.svg'
   const navigate = useNavigate()
+  const contentHeight = `calc(100dvh - ${NAVBAR_HEIGHT_PX}px)`
 
   return (
-    <div
-      style={{
-        height: '100dvh',
+    <Box
+      sx={{
+        height: contentHeight,
+        mt: `${NAVBAR_HEIGHT_PX}px`,
         display: 'grid',
-        gridTemplateColumns: isSmall ? '1fr' : 'minmax(320px,30%) minmax(0,1fr)',
+        gridTemplateColumns: isSmall ? '1fr' : 'minmax(280px, 28%) minmax(0, 1fr)',
         overflow: 'hidden',
       }}
     >
-      {/* LEFT (non-scrolling) */}
-      <div
-        style={{
-          overflow: 'hidden',
-          borderRight: isSmall ? 'none' : `1px solid ${theme.palette.divider}`,
-          background: theme.palette.background.default,
-        }}
-      >
-        <GridContainer
-          look={{ padding: isSmall ? '12px' : '16px 20px', gridTemplateColumns: '1fr', alignItems: 'flex-start' }}
-        >
-          <GridItem area={12}>
-            <Profile
-              look={{ width: 175, height: 175, borderRadius: '50%', cursor: 'pointer' }}
-              src={'groheadshot.jpg'}
-              onClick={() => navigate('/')}
-            />
-          </GridItem>
-
-          <GridItem area={12}>
-            <Letter look={{ fontSize: 'clamp(28px, 4vw, 40px)', color: theme.palette.text.title, fontWeight: 'bold' }}>
-              Colin M. Cavanaugh
-            </Letter>
-            <Letter
-              look={{ fontSize: 'clamp(16px, 2.6vw, 22px)', color: theme.palette.text.title, fontWeight: 'bold' }}
-            >
-              Full-Stack Software Engineer | End-to-End System Architect | Real-Time Apps · AWS · React · TypeScript
-            </Letter>
-          </GridItem>
-
-          <GridItem area={12}>
-            <Letter
-              look={{
-                fontSize: 'clamp(14px, 1.8vw, 18px)',
-                lineHeight: 1.75,
-                marginTop: 8,
-                fontWeight: 'bold',
-              }}
-            >
-              I’m a full-stack software engineer who has single-handedly architected and developed a large-scale
-              real-time CRM and workflow platform from the ground up. With expertise spanning system design, backend
-              infrastructure, frontend engineering, and UI/UX, I thrive on turning complex problems into scalable,
-              elegant solutions. I bring both technical depth and product vision—building systems that are not just
-              functional, but transformative for teams and users.
-            </Letter>
-          </GridItem>
-        </GridContainer>
-      </div>
-
-      {/* RIGHT (scrollable) */}
-      <div
-        style={{
+      {/* LEFT — profile panel */}
+      <Box
+        sx={{
           overflowY: 'auto',
-          minWidth: 0,
-          padding: isSmall ? '8px 12px' : '12px 20px',
-          transition: 'all 0.3s ease',
+          borderRight: isSmall ? 'none' : `1px solid ${theme.palette.divider}`,
+          backgroundColor: theme.palette.mode === 'light' ? '#EEF1F5' : theme.palette.background.paper,
+          p: isSmall ? '16px 16px' : '24px 20px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
         }}
       >
-        {/* use block (not 12-col grid) and lay out horizontally */}
-        <GridContainer look={{ display: 'block', padding: 0 }}>
-          <Section
-            look={{
-              display: 'flex',
-              flexDirection: isSmall ? 'column' : 'row', // horizontal on wide, stacked on small
-              alignItems: 'flex-start',
-              justifyContent: 'flex-start',
-              textAlign: 'left',
-              gap: 24,
-              width: '100%',
-            }}
-          >
-            {/* Two horizontal cards */}
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                textAlign: 'left',
-                gap: 1,
-                // responsive column card
-                // flex: '1 1 520px', // grows, basis ~520px
-                // minWidth: 320, // don’t shrink too small
-                maxWidth: '100%',
-              }}
-            >
-              <Box sx={{ width: '100%' }}>
-                <Typography variant="h4" sx={{ py: 1 }}>
-                  Experience
-                </Typography>
-              </Box>
-              <CollapsibleSection
-                logoSrc={GroIcon}
-                heading="GRO Marketing"
-                subheading="Full Stack Software Engineer • February 2023 – Present"
-                items={experience}
-                collapsedMaxHeight={330} // tweak as you like
-              />
+        <Profile
+          look={{
+            width: 160,
+            height: 160,
+            borderRadius: '50%',
+            cursor: 'pointer',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
+          }}
+          src={'groheadshot.jpg'}
+          onClick={() => navigate('/')}
+        />
 
-              <CollapsibleSection
-                logoSrc={LightspeedExpeditingLogo}
-                heading="Lightspeed Expediting, LLC"
-                subheading="Owner • January 2010 – March 2023"
-                items={lightspeedExperience}
-                collapsedMaxHeight={80}
-              />
+        <Box>
+          <Typography
+            variant="h5"
+            sx={{ fontWeight: 700, color: theme.palette.text.title, letterSpacing: '-0.5px', lineHeight: 1.2 }}
+          >
+            Colin M. Cavanaugh
+          </Typography>
+          <Typography
+            variant="body2"
+            sx={{ color: theme.palette.primary.main, fontWeight: 600, mt: 0.5, lineHeight: 1.4 }}
+          >
+            Senior Software Engineer
+          </Typography>
+          <Typography variant="body2" sx={{ color: theme.palette.text.secondary, mt: 0.25, fontSize: 13 }}>
+            OuterBox · Detroit, MI
+          </Typography>
+        </Box>
+
+        <SummaryText />
+
+        <Divider />
+
+        {/* Skills */}
+        <Box>
+          <Typography variant="overline" sx={{ fontWeight: 700, color: theme.palette.text.secondary, fontSize: 10 }}>
+            Technical Skills
+          </Typography>
+          {skillGroups.map(group => (
+            <Box key={group.label} sx={{ mt: 1 }}>
+              <Typography
+                variant="caption"
+                sx={{ color: theme.palette.text.secondary, fontWeight: 600, display: 'block', mb: 0.5 }}
+              >
+                {group.label}
+              </Typography>
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                {group.skills.map(skill => (
+                  <Chip
+                    key={skill}
+                    label={skill}
+                    size="small"
+                    sx={{
+                      fontSize: 11,
+                      height: 22,
+                      backgroundColor: `${theme.palette.primary.main}18`,
+                      color: theme.palette.text.primary,
+                      border: `1px solid ${theme.palette.primary.main}30`,
+                      fontWeight: 500,
+                    }}
+                  />
+                ))}
+              </Box>
             </Box>
-          </Section>
-        </GridContainer>
-      </div>
-    </div>
+          ))}
+        </Box>
+      </Box>
+
+      {/* RIGHT — scrollable content */}
+      <Box
+        sx={{
+          overflowY: 'auto',
+          overflowX: 'hidden',
+          p: isSmall ? '16px' : '24px 28px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 3,
+          minWidth: 0,
+        }}
+      >
+        {/* Experience */}
+        <Box>
+          <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, letterSpacing: '-0.3px' }}>
+            Experience
+          </Typography>
+
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
+            <CollapsibleSection
+              logoSrc={OuterBoxLogo}
+              heading="OuterBox (acquired Feb 2026)"
+              subheading="Senior Software Engineer · February 2023 – Present · Detroit, MI"
+              items={outerboxExperience}
+              collapsedMaxHeight={300}
+            />
+          </Box>
+
+          <Divider sx={{ my: 2.5 }} />
+
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
+            <CollapsibleSection
+              logoSrc={LightspeedExpeditingLogo}
+              heading="Lightspeed Delivery, LLC"
+              subheading="Owner / Operator · January 2010 – March 2023 · Hamburg, MI"
+              items={lightspeedExperience}
+              collapsedMaxHeight={80}
+            />
+          </Box>
+        </Box>
+
+        <Divider />
+
+        {/* Education */}
+        <Box>
+          <Typography variant="h5" sx={{ fontWeight: 700, mb: 1.5, letterSpacing: '-0.3px' }}>
+            Education
+          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1 }}>
+            <Box>
+              <Typography variant="body1" sx={{ fontWeight: 600 }}>
+                Washtenaw Community College
+              </Typography>
+              <Typography variant="body2" sx={{ color: theme.palette.text.secondary }}>
+                Computer Engineering · 2006 – 2008
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+
+        <Divider />
+
+        {/* Case Study CTA */}
+        <Box
+          sx={{
+            p: 3,
+            borderRadius: '8px',
+            backgroundColor: `${theme.palette.primary.main}0D`,
+            border: `1px solid ${theme.palette.primary.main}30`,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 2,
+          }}
+        >
+          <Box>
+            <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+              Production CRM &amp; AI-Powered Operations Platform
+            </Typography>
+            <Typography variant="body2" sx={{ color: theme.palette.text.secondary, mt: 0.5 }}>
+              Technical deep-dive: architecture, AI agent layer, real-time infrastructure, and key outcomes — including
+              the acquisition cited as a top-4 strategic factor.
+            </Typography>
+            <Box sx={{ display: 'flex', gap: 2, mt: 1.5, flexWrap: 'wrap' }}>
+              {[
+                { value: 'Top 4', label: 'Acquisition Factor' },
+                { value: '< 90s', label: 'Deal-to-Contract' },
+                { value: '90%', label: 'AI Cost Reduction' },
+                { value: '67%', label: 'DB Cost Reduction' },
+              ].map(m => (
+                <Box key={m.label} sx={{ textAlign: 'center' }}>
+                  <Typography variant="h6" sx={{ fontWeight: 800, color: theme.palette.primary.main, lineHeight: 1 }}>
+                    {m.value}
+                  </Typography>
+                  <Typography variant="caption" sx={{ color: theme.palette.text.secondary }}>
+                    {m.label}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+          </Box>
+          <Button
+            variant="contained"
+            endIcon={<ArrowForwardIcon />}
+            onClick={() => navigate('/casestudy')}
+            sx={{ alignSelf: 'flex-start', fontWeight: 600, width: '100%' }}
+          >
+            View Case Study
+          </Button>
+        </Box>
+      </Box>
+    </Box>
   )
 }
 
 export default About_V2
-
-// import {
-//   Divider,
-//   Grid2 as Grid,
-//   List,
-//   ListItem,
-//   ListItemIcon,
-//   ListItemText,
-//   Typography,
-//   useMediaQuery,
-//   useTheme,
-// } from '@mui/material'
-// import { Profile } from '../library/matter-ui-profile'
-// import { Letter } from '../library/matter-ui-letter'
-// import { GridContainer } from '../library/matter-ui-gridcontainer'
-// import { GridItem } from '../library/matter-ui-griditem'
-// import { useNavigate } from 'react-router-dom'
-// import { Section } from '../library/matter-ui-section'
-// import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked'
-// import GroIcon from '../img/gromarketing-white.png'
-// import LightspeedExpeditingLogo from '../img/lightspeedexpediting-logo.png'
-
-// const experience = [
-//   'Sole engineer and system architect of a large-scale, real-time CRM and workflow platform, delivering end-to-end development across architecture, backend services, frontend engineering, UI/UX, and integrations.',
-//   'Designed and deployed a scalable backend architecture on AWS, integrating RESTful APIs with both MySQL and DynamoDB to support diverse data models, high throughput, and availability.',
-//   'Architected a shared caching layer for the platform’s largest dataset, enabling real-time data freshness and consistency across sessions while significantly reducing backend load.',
-//   'Built real-time WebSocket infrastructure to synchronize live contract and campaign data across distributed users with low latency.',
-//   'Led a comprehensive TypeScript migration and frontend refactor, enhancing type safety, maintainability, and development velocity across the application.',
-//   'Optimized React Query caching strategies and invalidation flows to deliver a more responsive and reliable user experience.',
-//   'Automated critical business workflows, including onboarding, deal management, contract merging, and client communications, reducing manual intervention and increasing operational efficiency.',
-//   'Implemented structured Git branching and semantic versioning (standard-version), improving release quality and traceability.',
-//   'Coordinated phased testing and delivered the platform to production within 10 months, establishing a foundation for future engineering team expansion.',
-//   'Maintained a strong emphasis on system scalability, performance optimization, and long-term maintainability across all components.',
-// ]
-// const lightspeedExperience = [
-//   'Founded and operated a freight expediting company for over a decade, overseeing business strategy, operations, and client relationships.',
-//   'Developed custom pricing and quoting systems using Python, JavaScript, and Excel integrations, improving financial visibility and profitability.',
-//   'Automated data processing to maintain accurate business records and support year-over-year growth.',
-//   'Built enduring client relationships through transparent communication and operational reliability.',
-// ]
-
-// const About_V2 = () => {
-//   const theme = useTheme()
-//   const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
-//   const isMed = useMediaQuery(theme.breakpoints.down('md'))
-//   const navigate = useNavigate()
-
-//   return (
-//     <div
-//       style={{
-//         height: '100dvh',
-//         display: 'grid',
-//         gridTemplateColumns: isSmall ? '1fr' : 'minmax(320px,30%) minmax(0,1fr)',
-//         overflow: 'hidden',
-//       }}
-//     >
-//       {/* Left rail (non-scrolling) */}
-//       <div
-//         style={{
-//           overflow: 'hidden',
-//           borderRight: isSmall ? 'none' : `1px solid ${theme.palette.divider}`,
-//           background: theme.palette.background.default,
-//         }}
-//       >
-//         <GridContainer
-//           look={{
-//             padding: isSmall ? '12px' : '16px 20px',
-//             gridTemplateColumns: '1fr', // <-- single column, not 12
-//             alignItems: 'flex-start',
-//           }}
-//         >
-//           <GridItem area={12}>
-//             <Profile
-//               look={{ width: 175, height: 175, borderRadius: '50%', cursor: 'pointer' }}
-//               src={'groheadshot.jpg'}
-//               onClick={() => navigate('/')}
-//             />
-//           </GridItem>
-
-//           <GridItem area={12}>
-//             <Letter look={{ fontSize: 'clamp(28px, 4vw, 40px)', color: theme.palette.text.title, fontWeight: 'bold' }}>
-//               Colin M. Cavanaugh
-//             </Letter>
-//             <Letter
-//               look={{ fontSize: 'clamp(16px, 2.6vw, 22px)', color: theme.palette.text.title, fontWeight: 'bold' }}
-//             >
-//               Full-Stack Software Engineer | End-to-End System Architect | Real-Time Apps · AWS · React · TypeScript
-//             </Letter>
-//           </GridItem>
-
-//           <GridItem area={12}>
-//             <Letter
-//               look={{
-//                 fontSize: isSmall ? 16 : 20,
-//                 lineHeight: 1.75,
-//                 marginTop: 8,
-//                 fontWeight: 'bold',
-//               }}
-//             >
-//               I’m a full-stack software engineer who has single-handedly architected and developed a large-scale
-//               real-time CRM and workflow platform from the ground up. With expertise spanning system design, backend
-//               infrastructure, frontend engineering, and UI/UX, I thrive on turning complex problems into scalable,
-//               elegant solutions. I bring both technical depth and product vision—building systems that are not just
-//               functional, but transformative for teams and users.
-//             </Letter>
-//           </GridItem>
-//         </GridContainer>
-//       </div>
-
-//       {/* Right pane (scrollable) */}
-//       <div
-//         style={{
-//           overflowY: 'auto',
-//           minWidth: 0,
-//           padding: isSmall ? '8px 12px' : '12px 20px',
-//         }}
-//       >
-//         <GridContainer
-//           look={{
-//             padding: 0,
-//             gridTemplateColumns: '1fr',
-//             alignItems: 'flex-start',
-//           }}
-//         >
-//           <Section
-//             look={{
-//               alignItems: 'flex-start',
-//               justifyContent: 'flex-start',
-//               textAlign: 'left',
-//               width: '100%',
-//               //   gap: 12,
-//             }}
-//           >
-//             <Typography variant="h4" sx={{ py: 1 }}>
-//               Experience
-//             </Typography>
-
-//             <Profile src={GroIcon} />
-//             <Typography variant="h6">GRO Marketing</Typography>
-//             <Typography variant="h5">Full Stack Software Engineer • February 2023 – Present</Typography>
-
-//             {/* <Grid size={isSmall ? 12 : 8}> */}
-//             <List dense>
-//               {experience.map((text, i) => (
-//                 <ListItem key={`gro-${i}`}>
-//                   <ListItemIcon>
-//                     <RadioButtonUncheckedIcon fontSize="inherit" />
-//                   </ListItemIcon>
-//                   <ListItemText>{text}</ListItemText>
-//                 </ListItem>
-//               ))}
-//             </List>
-//             {/* </Grid> */}
-
-//             <Divider sx={{ my: 2 }} />
-
-//             <Profile src={LightspeedExpeditingLogo} />
-//             <Typography variant="h6">Lightspeed Expediting, LLC</Typography>
-//             <Typography variant="h5">Owner • January 2010 – March 2023</Typography>
-
-//             {/* <Grid size={isSmall ? 12 : 8}> */}
-//             <List dense>
-//               {lightspeedExperience.map((text, i) => (
-//                 <ListItem key={`lxs-${i}`}>
-//                   <ListItemIcon>
-//                     <RadioButtonUncheckedIcon fontSize="inherit" />
-//                   </ListItemIcon>
-//                   <ListItemText>{text}</ListItemText>
-//                 </ListItem>
-//               ))}
-//             </List>
-//             {/* </Grid> */}
-//           </Section>
-//         </GridContainer>
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default About_V2

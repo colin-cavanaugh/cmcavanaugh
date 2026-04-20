@@ -1,0 +1,16 @@
+# PUT (upsert)
+curl -s -X PUT "http://127.0.0.1:8000/api/item?overwrite=true" \
+  -H "Content-Type: application/json" \
+  -d '{"PK":"ORG#1001","SK":"PRODUCT#A1","name":"Widget A1","price":19.99}'
+
+# GET one
+curl -s "http://127.0.0.1:8000/api/item/ORG%231001/PRODUCT%23A1"
+
+# QUERY by PK (all)
+curl -s "http://127.0.0.1:8000/api/items/ORG%231001?limit=25"
+
+# QUERY by PK with SK prefix
+curl -s "http://127.0.0.1:8000/api/items/ORG%231001?begins_with=PRODUCT%23&limit=25"
+
+# DELETE one
+curl -s -X DELETE "http://127.0.0.1:8000/api/item/ORG%231001/PRODUCT%23A1"

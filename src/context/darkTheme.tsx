@@ -26,107 +26,65 @@ declare module '@mui/material/styles' {
   }
 }
 
-// Now you can define your custom theme
 export const darkTheme = createTheme({
+  shape: { borderRadius: 8 },
   palette: {
     mode: 'dark',
-    primary: { main: 'rgba(255,255,255,1)', contrastText: 'rgba(0,0,0,1)' },
-    secondary: { main: 'rgba(255,255,255,1)', contrastText: 'rgba(0,0,0,1)' },
+    primary: { main: '#5C8DC5', contrastText: '#FFFFFF' },
+    secondary: { main: '#AD9E90', contrastText: '#FFFFFF' },
     background: {
       default: 'rgba(36, 48, 73, 1)',
-      paper: 'rgba(0,0,0,1)',
-      custom: 'rgb(234, 112, 71)', // ✅ No TypeScript error
-      blur: 'rgba(0, 0, 0, 0.7)',
+      paper: 'rgba(28, 37, 58, 1)',
+      custom: '#AD9E90',
+      blur: 'rgba(36, 48, 73, 0.85)',
+      icon: '#5C8DC5',
     },
     text: {
       primary: 'rgba(255,255,255,1)',
-      secondary: 'rgba(255,255,255,0.8)',
-      title: 'rgba(255,255,255,1)', // ✅ No TypeScript error
+      secondary: 'rgba(255,255,255,0.65)',
+      title: 'rgba(255,255,255,1)',
     },
+    divider: 'rgba(255,255,255,0.12)',
     icon: {
-      primary: 'rgba(255,255,255,1)',
-      secondary: 'rgba(255,255,255,1)',
+      primary: '#5C8DC5',
+      secondary: 'rgba(255,255,255,0.65)',
     },
   },
   components: {
-    MuiSpeedDialAction: {
-      styleOverrides: {
-        fab: {
-          backgroundColor: 'rgba(255,255,255,1) !important',
-          color: 'rgba(0,0,0,1) !important',
-          '&:hover': {
-            backgroundColor: 'rgba(255,255,255,0.8) !important',
-          },
-          textTransform: 'none',
-          borderRadius: '50px',
-          boxShadow: 'none',
-        },
-      },
-    },
-    MuiSpeedDial: {
-      styleOverrides: {
-        root: {
-          position: 'fixed',
-          bottom: 16,
-          right: 16,
-        },
-      },
-    },
-    MuiFab: {
-      styleOverrides: {
-        root: {
-          backgroundColor: 'rgba(255,255,255,1)',
-          color: 'rgba(0,0,0,1)',
-          '&:hover': {
-            backgroundColor: 'rgba(255,255,255,0.8)',
-          },
-          textTransform: 'none',
-          borderRadius: '50px',
-          boxShadow: 'none',
-        },
-      },
-    },
-    MuiIconButton: {
-      styleOverrides: {
-        root: {
-          backgroundColor: 'rgba(255,255,255,1)',
-          color: 'rgba(0,0,0,1)',
-          '&:hover': {
-            backgroundColor: 'rgba(255,255,255,0.8)',
-          },
-          textTransform: 'none',
-          borderRadius: '25px',
-        },
-      },
-    },
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: '#000000',
+          backgroundColor: 'rgba(28, 37, 58, 1)',
           color: '#FFFFFF',
+          boxShadow: 'none',
+          borderBottom: '1px solid rgba(255,255,255,0.1)',
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+          borderRadius: '8px',
         },
       },
     },
     MuiPaper: {
       styleOverrides: {
         root: {
-          backgroundColor: 'rgba(0,0,0,1)',
-          color: 'rgba(255,255,255,1)',
-          boxShadow: 'none',
+          backgroundColor: 'rgba(28, 37, 58, 1)',
+          backgroundImage: 'none',
         },
       },
     },
     MuiTooltip: {
       styleOverrides: {
         tooltip: {
-          backgroundColor: 'transparent', // 🔥 Custom tooltip background
-          color: 'rgba(255,255,255,1)', // ✅ Ensure text is visible
-          fontWeight: 'bold',
-          borderRadius: '6px',
-          padding: '8px 12px',
-        },
-        arrow: {
-          color: '#FF5733', // ✅ Matches tooltip background
+          backgroundColor: 'rgba(28, 37, 58, 0.95)',
+          color: '#FFFFFF',
+          fontWeight: 500,
+          borderRadius: '8px',
+          padding: '6px 10px',
         },
       },
     },

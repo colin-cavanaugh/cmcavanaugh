@@ -1,78 +1,71 @@
-import { createTheme } from '@mui/material'
+import { createTheme } from '@mui/material/styles'
 
+// Harbor Haze palette: #909EAE · #5C8DC5 · #AD9E90 · #736F60
 export const customTheme = createTheme({
+  shape: { borderRadius: 8 },
   palette: {
     mode: 'light',
-    primary: { main: 'rgb(132, 140, 207)', contrastText: '#4e342e' },
-    secondary: { main: 'rgba(255,255,255,1)', contrastText: '#4e342e' },
+    primary: { main: '#5C8DC5', contrastText: '#FFFFFF' },
+    secondary: { main: '#736F60', contrastText: '#FFFFFF' },
     background: {
-      default: 'rgba(220, 215, 215, 0.98)',
-      paper: 'rgba(255,255,255,1)',
-      custom: 'rgb(25, 118, 210)',
-      blur: 'rgba(220, 215, 215, 0.9)',
-      icon: 'rgb(234, 112, 71)',
+      default: '#F4F6F9',
+      paper: '#FFFFFF',
+      custom: '#AD9E90',
+      blur: 'rgba(244, 246, 249, 0.92)',
+      icon: '#5C8DC5',
     },
     text: {
-      primary: 'rgba(0,0,0,1)',
-      secondary: 'rgba(255,255,255,1)',
-      title: 'rgb(234, 112, 71)',
+      primary: '#1E2535',
+      secondary: '#736F60',
+      title: '#1E2535',
     },
+    divider: '#D3D8DF',
     icon: {
-      primary: 'rgb(234, 112, 71)',
-      secondary: 'rgba(255,255,255,1)',
+      primary: '#5C8DC5',
+      secondary: '#909EAE',
     },
   },
   components: {
-    MuiSpeedDialAction: {
-      styleOverrides: {
-        fab: {
-          // backgroundColor: 'rgba(255,255,255,1) ', // ✅ Set white background
-          color: 'rgba(255,255,255,1) ', // ✅ Set icon color to purple
-          '&:hover': {
-            backgroundColor: 'rgba(255,255,255,0.8)',
-          },
-          boxShadow: 'none', // ✅ Remove shadow
-          border: 'none', // ✅ Remove border
-        },
-      },
-    },
-    MuiSpeedDial: {
+    MuiAppBar: {
       styleOverrides: {
         root: {
-          position: 'fixed',
-          bottom: 16,
-          right: 16,
-        },
-      },
-    },
-    MuiFab: {
-      styleOverrides: {
-        root: {
-          // backgroundColor: 'rgba(255,255,255,1)',
-          color: 'rgba(255,255,255,1)',
-          backgroundColor: 'rgb(234, 112, 71)',
-          // color: 'rgb(234, 112, 71)',
-          '&:hover': {
-            backgroundColor: 'rgb(234, 112, 71, 0.8)',
-          },
-          textTransform: 'none',
-          borderRadius: '50px',
+          backgroundColor: '#FFFFFF',
+          color: '#1E2535',
           boxShadow: 'none',
-          border: 'none',
+          borderBottom: '1px solid #D3D8DF',
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+          borderRadius: '8px',
+        },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          borderRadius: '8px',
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          boxShadow: '0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06)',
         },
       },
     },
     MuiTooltip: {
       styleOverrides: {
         tooltip: {
-          backgroundColor: 'transparent', // 🔥 Custom tooltip background
-          color: 'rgba(0,0,0,1)', // ✅ Ensure text is visible
-          fontWeight: 'bold',
-          borderRadius: '6px',
-          padding: '8px 12px',
-        },
-        arrow: {
-          color: '#FF5733', // ✅ Matches tooltip background
+          backgroundColor: '#1E2535',
+          color: '#FFFFFF',
+          fontWeight: 500,
+          borderRadius: '8px',
+          padding: '6px 10px',
         },
       },
     },
