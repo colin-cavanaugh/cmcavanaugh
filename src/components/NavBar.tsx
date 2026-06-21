@@ -39,7 +39,18 @@ const NavBar = () => {
 
   return (
     <>
-      <AppBar position="fixed" elevation={0} sx={{ height: NAVBAR_HEIGHT, zIndex: theme.zIndex.drawer + 1 }}>
+      <AppBar
+        position="fixed"
+        elevation={0}
+        color="default"
+        sx={{
+          height: NAVBAR_HEIGHT,
+          zIndex: theme.zIndex.drawer + 1,
+          backgroundColor: theme.palette.background.paper,
+          borderBottom: `1px solid ${theme.palette.divider}`,
+          boxShadow: 'none',
+        }}
+      >
         <Toolbar
           sx={{
             height: NAVBAR_HEIGHT,
@@ -81,12 +92,14 @@ const NavBar = () => {
                   key={link.path}
                   onClick={() => navigate(link.path)}
                   sx={{
-                    color: isActive(link.path) ? theme.palette.primary.main : theme.palette.text.primary,
+                    color: theme.palette.text.primary,
                     fontWeight: isActive(link.path) ? 700 : 500,
                     fontSize: '0.85rem',
                     px: 1.25,
                     whiteSpace: 'nowrap',
                     minWidth: 'unset',
+                    borderBottom: isActive(link.path) ? `2px solid ${theme.palette.primary.main}` : '2px solid transparent',
+                    borderRadius: 0,
                     '&:hover': { backgroundColor: `${theme.palette.primary.main}12` },
                   }}
                 >
@@ -120,9 +133,9 @@ const NavBar = () => {
                   ml: 0.5,
                   flexShrink: 0,
                   color: theme.palette.text.primary,
-                  backgroundColor: 'transparent !important',
+                  borderRadius: 1,
                   '&:hover': {
-                    backgroundColor: `${theme.palette.text.primary}18 !important`,
+                    backgroundColor: `${theme.palette.primary.main}12`,
                   },
                 }}
                 title="Toggle theme"
