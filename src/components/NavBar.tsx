@@ -142,8 +142,10 @@ const NavBar = () => {
                   flexShrink: 0,
                   color: theme.palette.text.primary,
                   borderRadius: 1,
+                  transition: 'background-color 0.15s ease, color 0.15s ease',
                   '&:hover': {
-                    backgroundColor: `${theme.palette.primary.main}12`,
+                    backgroundColor: `${theme.palette.primary.main}1f`,
+                    color: theme.palette.primary.main,
                   },
                 }}
                 title="Toggle theme"
