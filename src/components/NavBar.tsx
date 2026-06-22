@@ -100,7 +100,11 @@ const NavBar = () => {
                     minWidth: 'unset',
                     borderBottom: isActive(link.path) ? `2px solid ${theme.palette.primary.main}` : '2px solid transparent',
                     borderRadius: 0,
-                    '&:hover': { backgroundColor: `${theme.palette.primary.main}12` },
+                    transition: 'background-color 0.15s ease, color 0.15s ease',
+                    '&:hover': {
+                      backgroundColor: `${theme.palette.primary.main}1f`,
+                      color: theme.palette.text.primary,
+                    },
                   }}
                 >
                   {link.label}
@@ -120,7 +124,11 @@ const NavBar = () => {
                   fontSize: '0.82rem',
                   whiteSpace: 'nowrap',
                   flexShrink: 0,
-                  '&:hover': { backgroundColor: `${theme.palette.primary.main}12` },
+                  '&:hover': {
+                    backgroundColor: `${theme.palette.primary.main}1f`,
+                    borderColor: theme.palette.primary.main,
+                    color: theme.palette.primary.main,
+                  },
                 }}
               >
                 Résumé
